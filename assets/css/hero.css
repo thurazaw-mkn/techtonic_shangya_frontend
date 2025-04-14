@@ -1,0 +1,39 @@
+
+.hero {
+  background-color: #f9f9f9;
+  padding: 4rem 0;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-text .green {
+  color: var(--primary-color);
+}
+
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
