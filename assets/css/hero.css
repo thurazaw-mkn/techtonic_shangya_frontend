@@ -54,7 +54,7 @@
 }
 
 .hero-section-btn:hover {
-  background-color: #27ae60;
+  background-color: var(--dark-color);
 }
 .hero-text p {
   width: 50%;
