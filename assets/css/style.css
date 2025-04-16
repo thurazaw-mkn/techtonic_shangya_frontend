@@ -1,9 +1,22 @@
-
-/* Base Reset and Global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
 }
 
 img {
@@ -15,3 +28,93 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* start of animations */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 1s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* end of animations */
+
+/* start of nav */
+
+.navbar {
+  background: var(--nav-background-color);
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.nav-links a {
+  margin-left: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav-links a:hover{
+  color: var(--primary-color);
+}
+
+.nav-links .btn {
+  margin-left: 1.5rem;
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+  font-weight: 500;
+  text-align: center;
+}
+
+.nav-links .btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* end of nav */
+
+/* start of footer */
+
+footer{
+  background-color: var(--secondary-color);
+  height: 500px;
+}
+
+/* end of footer */
+
+

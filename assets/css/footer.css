@@ -1,0 +1,22 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--primary-color);
+  height: 500px;
+}
+
+.flex-container > div {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+}
+
+.footer-image img {
+  height: 200px;         
+  width: 200px;
+  padding-top: 60px;
+}
+
