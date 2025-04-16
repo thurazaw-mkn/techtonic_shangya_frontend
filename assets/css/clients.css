@@ -34,7 +34,7 @@
 
 .card {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 100px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 280px;
   padding: 25px;
@@ -42,4 +42,10 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.padding-top{
+  padding-top: 50px;
+}
+.radius{
+  border-radius: 100px;
+}
 
