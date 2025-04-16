@@ -1,0 +1,29 @@
+
+.features {
+  background-color: #f9f9f9;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.feature-cards {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
