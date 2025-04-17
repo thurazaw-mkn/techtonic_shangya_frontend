@@ -14,9 +14,22 @@
   font-size: 20px;
 }
 
+img{
+  display: inline;
+}
+
 .footer-image img {
   height: 200px;         
   width: 200px;
   padding-top: 60px;
+  display: inline;
 }
+
+/* .center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+} */
+
+
 
