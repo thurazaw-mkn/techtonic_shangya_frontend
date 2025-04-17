@@ -4,62 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marquee Background</title>
-
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      .marquee-bg {
-        height: 300px;
-        background-image: url("./assets/img/crossline.png");
-        background-repeat: repeat-x;
-        background-size: auto 100%;
-        background-position: 0 50%;
-        animation: marqueeScroll 20s linear infinite;
-        position: relative;
-        overflow: hidden;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      @keyframes marqueeScroll {
-        0% {
-          background-position: 0 50%;
-        }
-        100% {
-          background-position: -1000px 50%;
-        }
-      }
-
-      .marquee-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 0;
-      }
-
-      .marquee-bg .content {
-        position: relative;
-        z-index: 1;
-        color: #fff;
-        padding: 1rem;
-      }
-
-      .marquee-bg h1 {
-        margin: 0;
-        font-size: 2.5rem;
-      }
-
-      .marquee-bg p {
-        font-size: 1.2rem;
-      }
-    </style>
+    <link rel="stylesheet" href="./assets/css/typography.css" />
+    <link rel="stylesheet" href="./assets/css/jobs.css" />
   </head>
   <body>
     <div class="marquee-bg">
@@ -67,6 +13,41 @@
         <h1>Welcome to ShangYa Consultancy</h1>
         <p>Empowering careers for over 20 years.</p>
       </div>
+    </div>
+    <div class="find-job-section">
+      <div class="center-item">
+        <h1>Find Jobs</h1>
+      </div>
+      <div class="center-item">
+        <div class="space-item">
+          <input class="search-bar" type="text" placeholder="Search Location..." />
+          <input
+            class="search-bar"
+            type="text"
+            placeholder="Search Location..."
+          />
+        </div>
+      </div>
+
+      <div class="center-item space-item tag-section">
+        <label>
+          <input type="checkbox" >
+          <span class="find-job-section-tag">Freelance</span>
+        </label>
+        <label>
+          <input type="checkbox" >
+          <span class="find-job-section-tag">Fulltime</span>
+        </label><label>
+          <input type="checkbox" >
+          <span class="find-job-section-tag">Part-Time</span>
+          <label>
+            <input type="checkbox" >
+            <span class="find-job-section-tag">Internship</span>
+          </label>
+        </label><button type="button">Search</button>
+      </div>
+
+      
     </div>
   </body>
 </html>

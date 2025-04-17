@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.marquee-bg {
+  height: 300px;
+  background-image: url("../img/crossline.png");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: 0 50%;
+  animation: marqueeScroll 20s linear infinite;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: -1000px 50%;
+  }
+}
+
+.marquee-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.marquee-bg .content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 1rem;
+}
+
+.marquee-bg h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.marquee-bg p {
+  font-size: 1.2rem;
+}
+
+.center-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.space-item {
+  display: flex;
+  gap: 20px;
+}
+
+.search-bar {
+  background-color: var(--primary-color);
+  border: solid;
+
+  border-color: var(--white-color);
+  width: 300px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 3px 1.6rem;
+  padding-top: 5px;
+  font-size: 15px;
+}
+.search-bar:hover {
+  border-color: var(--dark-color);
+}
+.find-job-section {
+  background-color: var(--primary-color);
+  height: 1000px;
+}
+
+input::placeholder {
+  font-size: 15px;
+  color: var(--gray-color);
+}
+
+.tag-section {
+  padding-top: 20px;
+}
+
+.find-job-section input[type="checkbox"] {
+  display: none;
+}
+
+.find-job-section-tag {
+  padding: 10px 20px;
+  border: 2px solid var(--dark-color);
+  background-color: white;
+  border-radius: 20px;
+  font-size: medium;
+  font-weight: 500;
+  color: var(--dark-color);
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:checked + .find-job-section-tag {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+}
+
+input[type="checkbox"]:hover + .find-job-section-tag {
+  border-color: lightblue;
+}
