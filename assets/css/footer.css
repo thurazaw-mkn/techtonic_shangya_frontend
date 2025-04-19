@@ -1,17 +1,18 @@
 .flex-container {
   display: flex;
-  flex-direction: row;
   background-color: var(--primary-color);
-  height: 500px;
+  height: auto;
+  justify-content: space-between;
 }
 
-.flex-container > div {
+.flex-container-middle{
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin-right: 200px;
   text-align: center;
   color: black;
-  font-size: 20px;
+  
+  justify-content: center;
 }
 
 img{
@@ -23,6 +24,18 @@ img{
   width: 200px;
   padding-top: 60px;
   display: inline;
+}
+
+.footer-body{
+  background-color: var(--primary-color);
+  font-size: 30px;
+}
+
+.description-box {
+ background-color: white;
+ border: solid;
+ width: 300px;
+ height: 300px;
 }
 
 /* .center-box {
