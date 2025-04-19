@@ -6,48 +6,120 @@
     <title>Marquee Background</title>
     <link rel="stylesheet" href="./assets/css/typography.css" />
     <link rel="stylesheet" href="./assets/css/jobs.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <div class="marquee-bg">
-      <div class="content">
-        <h1>Welcome to ShangYa Consultancy</h1>
-        <p>Empowering careers for over 20 years.</p>
+    <header class="navbar">
+      <div class="container nav-content">
+        <div class="logo">SHANGYA</div>
+        <nav class="nav-links">
+          <a href="./index.html">Home</a>
+          <a href="./jobs.html">Jobs</a>
+          <a href="./about.html">About</a>
+          <a href="./enhancements.html">Enhancements</a>
+          <a class="btn" href="./apply.html">Apply Jobs →</a>
+        </nav>
       </div>
-    </div>
-    <div class="find-job-section">
-      <div class="center-item">
-        <h1>Find Jobs</h1>
-      </div>
-      <div class="center-item">
-        <div class="space-item">
-          <input class="search-bar" type="text" placeholder="Search Location..." />
-          <input
-            class="search-bar"
-            type="text"
-            placeholder="Search Location..."
-          />
-        </div>
-      </div>
+    </header>
 
-      <div class="center-item space-item tag-section">
-        <label>
-          <input type="checkbox" >
-          <span class="find-job-section-tag">Freelance</span>
-        </label>
-        <label>
-          <input type="checkbox" >
-          <span class="find-job-section-tag">Fulltime</span>
-        </label><label>
-          <input type="checkbox" >
-          <span class="find-job-section-tag">Part-Time</span>
+    <section class="find-job-section">
+      <section class="search-section">
+        <article class="center-item">
+          <h1>Find Jobs</h1>
+        </article>
+
+        <section class="center-item">
+          <section class="space-item">
+            <input
+              class="search-bar"
+              type="text"
+              placeholder="Search Jobs..."
+            />
+            <input
+              class="search-bar"
+              type="text"
+              placeholder="Search Location..."
+            />
+          </section>
+        </section>
+
+        <section class="center-item space-item tag-section">
           <label>
-            <input type="checkbox" >
-            <span class="find-job-section-tag">Internship</span>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Freelance</span>
           </label>
-        </label><button type="button">Search</button>
-      </div>
+          <label>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Fulltime</span> </label
+          ><label>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Part-Time</span>
+            <label>
+              <input type="checkbox" />
+              <span class="find-job-section-tag">Internship</span>
+            </label> </label
+          ><button class="search-btn" type="button">Search</button>
+        </section>
+      </section>
+      <section class="card-section">
+        <section class="space-card">
+          <section class="job-card">
+            <article class="space-item">
+              <img
+                class="company-logo"
+                src="https://global.toyota/pages/global_toyota/mobility/toyota-brand/emblem_001.jpg"
+                alt="company logo"
+              />
+              <h3 class="company-name">Company Name</h3>
+            </article>
+            <section class="space-card-text">
+              <article class="card-text">
+                <h4>offer postion</h4>
+                <p>Data Manager</p>
+              </article>
+              <article class="card-text">
+                <h4>Location</h4>
+                <p>Subang Jaya, SS15</p>
+              </article>
+              <article class="card-text">
+                <h4>Requirement</h4>
+                <p>cant remember anything</p>
+              </article>
+            </section>
+            <section class="card-footer">
+              <p>Posted 3 days ago</p>
+            </section>
+          </section>
 
-      
-    </div>
+          <section class="job-card">
+            <article class="space-item">
+              <img
+                class="company-logo"
+                src="https://global.toyota/pages/global_toyota/mobility/toyota-brand/emblem_001.jpg"
+                alt="company logo"
+              />
+              <h3 class="company-name">Company Name</h3>
+            </article>
+            <section class="space-card-text">
+              <article class="card-text">
+                <h4>offer postion</h4>
+                <p>Software Engineer</p>
+              </article>
+              <article class="card-text">
+                <h4>Location</h4>
+                <p>Not Found</p>
+              </article>
+              <article class="card-text">
+                <h4>Requirement</h4>
+                <p>m</p>
+              </article>
+            </section>
+            <section class="card-footer">
+              <p>Posted 3 days ago</p>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
   </body>
 </html>
