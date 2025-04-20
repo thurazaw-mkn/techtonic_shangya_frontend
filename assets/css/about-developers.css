@@ -29,8 +29,8 @@ h2{
   border-radius: 20px;
   padding: 1rem 2rem;
   margin-bottom: 1.5rem;
-  width: 200px;
-  height: 500px;
+  width: 500px;
+  height: 200px;
   background-color: purple;
 }
 
@@ -45,5 +45,10 @@ h2{
   margin-left: 1.5rem;
 }
 
+.info-right {
+  text-align: right;
+  flex: 1;
+  margin-right: 1.5rem;
+}
 
 
