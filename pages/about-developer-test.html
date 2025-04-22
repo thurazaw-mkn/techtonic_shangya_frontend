@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Techtonic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      max-height: 80px;
+    }
+
+    .team-info {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .team-info h1 {
+      margin-bottom: 10px;
+    }
+
+    .group-photo {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .group-photo img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .member-card {
+      background-color: #fff8dc;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .member-card h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .member-card p {
+      margin: 5px 0 0;
+      font-style: italic;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Replace the src with your team logo path -->
+    <img src="team-logo.png" alt="Team Logo" />
+  </header>
+
+  <div class="team-info">
+    <h1>Team Name: Techtonic</h1>
+    <h3>Team ID: Group 4</h3>
+  </div>
+
+  <div class="group-photo">
+    <!-- Replace the src with your group photo path -->
+    <img src="group-photo.png" alt="Team Group Photo" />
+  </div>
+
+  <div class="members">
+    <div class="member-card">
+      <h2>Thura Zaw</h2>
+      <p>Creative Director</p>
+    </div>
+    <div class="member-card">
+      <h2>Sai Lyan Hein</h2>
+      <p>Creative Director</p>
+    </div>
+    <div class="member-card">
+      <h2>Thet Hein Aung</h2>
+      <p>Creative Director</p>
+    </div>
+    <div class="member-card">
+      <h2>Kris</h2>
+      <p>Creative Director</p>
+    </div>
+  </div>
+
+</body>
+</html>
