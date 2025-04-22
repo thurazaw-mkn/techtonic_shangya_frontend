@@ -1,70 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHANGYA - Apply</title>
+    <link rel="stylesheet" href="./assets/css/typography.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/about.css" />
+    <link rel="stylesheet" href="./assets/css/apply.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <section class="container nav-content">
+        <section class="logo">SHANGYA</section>
+        <nav class="nav-links">
+          <a href="./index.html">Home</a>
+          <a href="./jobs.html">Jobs</a>
+          <a href="./about.html">About</a>
+          <a href="./enhancements.html">Enhancements</a>
+          <a class="btn" href="./apply.html">Apply Jobs →</a>
+        </nav>
+      </section>
+    </header>
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="./assets/css/typography.css">
-  <link rel="stylesheet" href="./assets/css/footer.css">
+    <section class="about-hero">
+      <section class="container fade-in">
+        <h1>Join with us</h1>
+        <p class="subtitle">20+ years of shaping careers and lives</p>
+        <p>
+          At ShangYa Consultancy, we're a dynamic full-service staffing provider
+          and agency, offering a range of innovative solutions including
+          recruitment, talent outsourcing, training, HR consulting, and more...
+        </p>
+      </section>
+    </section>
+
+    <section class="form-container slide-up">
+      <form>
+        <input type="text" placeholder="Job Reference Number" pattern="[A-Za-z0-9]{5}" required />
+        <input type="text" placeholder="First Name" maxlength="20" pattern="[A-Za-z]+" required />
+        <input type="text" placeholder="Last Name" maxlength="20" pattern="[A-Za-z]+" required />
+        <input type="text" placeholder="Date of Birth (dd/mm/yyyy)" pattern="\d{2}/\d{2}/\d{4}" required />
+
+        <fieldset>
+          <legend>Gender</legend>
+          <label><input type="radio" name="gender" value="male" required /> Male</label>
+          <label><input type="radio" name="gender" value="female" required /> Female</label>
+          <label><input type="radio" name="gender" value="other" required /> Other</label>
+        </fieldset>
+
+        <input type="text" placeholder="Street Address" maxlength="40" class="full-width" required />
+        <input type="text" placeholder="Suburb/Town" maxlength="40" />
+        <select required>
+          <option value="">Select State</option>
+          <option value="VIC">VIC</option>
+          <option value="NSW">NSW</option>
+          <option value="QLD">QLD</option>
+          <option value="NT">NT</option>
+          <option value="WA">WA</option>
+          <option value="SA">SA</option>
+          <option value="TAS">TAS</option>
+          <option value="ACT">ACT</option>
+        </select>
+        <input type="text" placeholder="Postcode" pattern="\d{4}" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Phone Number" pattern="[\d\s]{8,12}" required />
+
+        <section class="checkbox-group">
+          <label><input type="checkbox" name="skills" value="communication" /> Communication</label>
+          <label><input type="checkbox" name="skills" value="teamwork" /> Teamwork</label>
+          <label><input type="checkbox" name="skills" value="problem-solving" /> Problem Solving</label>
+          <label><input type="checkbox" name="skills" value="management" /> Management</label>
+          <label><input type="checkbox" name="skills" value="other" /> Other skills...</label>
+        </section>
+
+        <textarea placeholder="Describe your other skills"></textarea>
+
+        <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+      </form>
+    </section>
+  </body>
 </html>
-
-<body class="footer-body">
-  <footer class="flex-container">
-<<<<<<< HEAD
-    <div class="flex">
-      <div>
-=======
-    <section>
-      <section>
->>>>>>> a9c9078 (commit to merge)
-        meet with developers
-      </section>
-
-      <section class="footer-image">
-        <img src="./assets/img/tech.png" alt="Technology icon">
-      </section>
-     
-<<<<<<< HEAD
-      <div class="flex-container-middle">
-        Techtonic
-      </div>
-    </div>
-      
-    <div class="flex-container-middle">
-      <div>
-=======
-      <section style="padding-right: 10px;">
-        Techtonic
-      </section>
-      
-      <section class="center-box">
->>>>>>> a9c9078 (commit to merge)
-        <ul>
-        <li>Thura Zaw</li>
-        <li>Thet Hein Aung</li>
-        <li>Sai Lyan Hein</li>
-        <li>Krisvyn</li>
-        </ul>
-<<<<<<< HEAD
-      </div>
-    </div>
-
-    <div>
-      <div class="description-box">
-        Description: Thura Zaw KMKL 
-      </div>
-      <div>
-        
-      </div>
-    </div>
-    
-=======
-      </section>
-     
-     </section>
->>>>>>> a9c9078 (commit to merge)
-  </footer>
-</body>
-
-
-     
-     
