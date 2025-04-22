@@ -56,10 +56,12 @@ h4{
   margin-right: 1.5rem;
 }
 
-table {
+.table-gg {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  border-radius: 20%;
+  border: solid;
 }
 
 th {
@@ -73,6 +75,16 @@ td {
   border: 1px solid #000;
   text-align: left;
   padding: 8px;
+}
+
+.sec-color {
+  background-color: var(--secondary-color);
+}
+
+.about-team {
+  display: flex;
+  justify-content: space-between;
+
 }
 
 
