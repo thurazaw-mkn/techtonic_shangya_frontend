@@ -25,7 +25,7 @@ h4{
 }
 
 .title {
-  font-size: 3rem; 
+  font-size: 2rem; 
   font-weight: bold;
   text-align: center; /* Center alignment instead of right */
   margin-bottom: 2rem;
@@ -33,25 +33,27 @@ h4{
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.team-cards-section {
-  width: 100%;
-  order: 2; /* Keep on the right side */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the cards instead of far right */
-  padding-left: 90cap;
-  gap: 10px;
+about-team-section{
+  min-width: 50%;
+  max-width: 50%;
+}
 
+.team-cards-section {
+  min-width: 50%;
+  order: 2; /* Keep on the right side */
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-items: right; /*Center the cards instead of far right
+  /* padding-left: 90cap; */
+  gap: 10px;
+  padding-left: 5%;
 }
 
 .team-info-section {
   width: 120%;
   margin-top: 50px;
   order: 1; /* Move to the left */
-  background-color: var(--secondary-color);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 0px; /* Reduce padding */
 }
 
 .team-info-section h4 {
@@ -65,20 +67,19 @@ h4{
   align-items: center;
   justify-content: space-between;
   border-radius: 20px;
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem;
   margin-bottom: 12px; /* Reduced bottom margin */
-  max-width: 350px; /* Increased width from 280px to 350px */
-  width: 350px; /* Set explicit width */
-  height: 90px; /* Smaller card height */
+  max-width: 100%; /* Increased width from 280px to 350px */
+  width: 100%; /* Set explicit width */
+  height: 100px; /* Smaller card height */
   background-color: var(--secondary-color);
-  /* Add shadow and transition for hover effect */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .info h2, .info-right h2 {
   font-size: 1.1em; /* Smaller heading size */
-  margin-bottom: 2px;
+  margin: 10% 0; 
 }
 
 .info p, .info-right p {
@@ -177,12 +178,13 @@ td:hover {
 }
 
 .about-team {
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px;
+  padding: 4rem 0;
+  /* align-items: flex-start; */
   /* Add more space between sections */
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 
 .table-gg tr {
@@ -214,3 +216,66 @@ td:hover {
     width: 90%;
   }
 }
+
+hr {
+  margin-bottom: 40px; /* Increased from 10px to 40px */
+}
+
+/* Add some space above the timetable heading as well */
+h4.slide-up {
+  margin-top: 20px;
+}
+
+.team-photo {
+  max-width: 100%;
+  height: 30%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.team-photo img {
+  max-width: 150%;
+  min-width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-info-container {
+  display: flex;
+  /* flex-direction: row; */
+  /* align-items: center; */
+  justify-content: space-between;
+  /* gap: 50px; Increased gap between text and logo */
+  /* margin-top: 20px; */
+}
+
+.team-info-text {
+  flex: 1; /* Take up available space */
+}
+
+.team-logo {
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.team-logo img {
+  width: 150px; /* Make logo bigger - adjust as needed */
+  height: auto;
+  margin-right: 20px; /* Add some right margin */
+}
+
+.team-info-section {
+  width: 150%;
+  padding: 0; /* Remove all padding */
+  margin: 10px; /* Remove all margin */
+}
+
+.team-info-section h4 {
+  font-size: 24px;
+  text-align: left;
+  margin: 0; /* Remove all vertical spacing */
+  line-height: 1.2; /* Reduce line height to make text tighter */
+}
+
+
+
