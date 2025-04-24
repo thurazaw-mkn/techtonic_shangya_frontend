@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHANGYA - Apply</title>
-    <link rel="stylesheet" href="./assets/css/typography.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/about.css" />
-    <link rel="stylesheet" href="./assets/css/apply.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
   <body>
     <header class="navbar">
       <section class="container nav-content">
         <section class="logo">SHANGYA</section>
+        <input type="checkbox" class="menu-toggle" id="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
         <nav class="nav-links">
           <a href="./index.html">Home</a>
           <a href="./jobs.html">Jobs</a>
@@ -36,48 +40,141 @@
     </section>
 
     <section class="form-container slide-up">
+      <div class="form-title">Apply Jobs</div>
       <form>
-        <input type="text" placeholder="Job Reference Number" pattern="[A-Za-z0-9]{5}" required />
-        <input type="text" placeholder="First Name" maxlength="20" pattern="[A-Za-z]+" required />
-        <input type="text" placeholder="Last Name" maxlength="20" pattern="[A-Za-z]+" required />
-        <input type="text" placeholder="Date of Birth (dd/mm/yyyy)" pattern="\d{2}/\d{2}/\d{4}" required />
-
+        <div class="grid-2">
+          <input
+            type="text"
+            placeholder="Job Reference Number"
+            pattern="[A-Za-z0-9]{5}"
+            required
+          />
+          <input
+            type="text"
+            placeholder="First Name"
+            maxlength="20"
+            pattern="[A-Za-z]+"
+            required
+          />
+        </div>
+  
+        <div class="grid-2">
+          <input
+            type="text"
+            placeholder="Last Name"
+            maxlength="20"
+            pattern="[A-Za-z]+"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Date of Birth (dd/mm/yyyy)"
+            pattern="\d{2}/\d{2}/\d{4}"
+            required
+          />
+        </div>
+  
         <fieldset>
           <legend>Gender</legend>
-          <label><input type="radio" name="gender" value="male" required /> Male</label>
-          <label><input type="radio" name="gender" value="female" required /> Female</label>
-          <label><input type="radio" name="gender" value="other" required /> Other</label>
+          <div class="gender-options">
+            <label><input type="radio" name="gender" value="male" required /> Male</label>
+            <label><input type="radio" name="gender" value="female" required /> Female</label>
+            <label><input type="radio" name="gender" value="other" required /> Other</label>
+          </div>
         </fieldset>
-
-        <input type="text" placeholder="Street Address" maxlength="40" class="full-width" required />
-        <input type="text" placeholder="Suburb/Town" maxlength="40" />
-        <select required>
-          <option value="">Select State</option>
-          <option value="VIC">VIC</option>
-          <option value="NSW">NSW</option>
-          <option value="QLD">QLD</option>
-          <option value="NT">NT</option>
-          <option value="WA">WA</option>
-          <option value="SA">SA</option>
-          <option value="TAS">TAS</option>
-          <option value="ACT">ACT</option>
-        </select>
-        <input type="text" placeholder="Postcode" pattern="\d{4}" required />
-        <input type="email" placeholder="Email Address" required />
-        <input type="text" placeholder="Phone Number" pattern="[\d\s]{8,12}" required />
-
-        <section class="checkbox-group">
-          <label><input type="checkbox" name="skills" value="communication" /> Communication</label>
-          <label><input type="checkbox" name="skills" value="teamwork" /> Teamwork</label>
-          <label><input type="checkbox" name="skills" value="problem-solving" /> Problem Solving</label>
-          <label><input type="checkbox" name="skills" value="management" /> Management</label>
-          <label><input type="checkbox" name="skills" value="other" /> Other skills...</label>
-        </section>
-
+  
+        <input
+          type="text"
+          placeholder="Street Address"
+          maxlength="40"
+          required
+        />
+  
+        <div class="grid-2">
+          <input type="text" placeholder="Suburb/Town" maxlength="40" />
+          <select required>
+            <option value="">Select State</option>
+            <option value="VIC">VIC</option>
+            <option value="NSW">NSW</option>
+            <option value="QLD">QLD</option>
+            <option value="NT">NT</option>
+            <option value="WA">WA</option>
+            <option value="SA">SA</option>
+            <option value="TAS">TAS</option>
+            <option value="ACT">ACT</option>
+          </select>
+        </div>
+  
+        <div class="grid-2">
+          <input type="text" placeholder="Postcode" pattern="\d{4}" required />
+          <input type="email" placeholder="Email Address" required />
+        </div>
+  
+        <input
+          type="text"
+          placeholder="Phone Number"
+          pattern="[\d\s]{8,12}"
+          required
+        />
+  
+        <fieldset>
+          <legend>Skills</legend>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="skills" value="communication" /> Communication</label>
+            <label><input type="checkbox" name="skills" value="teamwork" /> Teamwork</label>
+            <label><input type="checkbox" name="skills" value="problem-solving" /> Problem Solving</label>
+            <label><input type="checkbox" name="skills" value="management" /> Management</label>
+            <label><input type="checkbox" name="skills" value="other" /> Other skills...</label>
+          </div>
+        </fieldset>
+  
         <textarea placeholder="Describe your other skills"></textarea>
-
+  
         <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
       </form>
     </section>
+
+    <footer class="footer">
+      <section class="footer-grid">
+        <section class="brand">
+          <img src="./assets/img/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
+          <h2>Team Techtonic</h2>
+          <p class="tagline">Innovating with passion</p>
+        </section>
+    
+        <section class="developers">
+          <h3>Developers</h3>
+          <ul>
+            <li>Thura Zaw</li>
+            <li>Sai Lyan Hein</li>
+            <li>Thet Hein Aung</li>
+            <li>Krisvyn</li>
+          </ul>
+        </section>
+    
+        <section class="socials">
+          <h3>Follow Us</h3>
+          <nav class="icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </nav>
+        </section>
+    
+        <section class="cta">
+          <a href="./pages/about-developers.html" class="details-btn">View Developers' Details</a>
+        </section>
+      </section>
+    
+      <section class="disclaimer">
+        <p>
+          This project is a collaboration between 
+          <strong>INTI International College Subang</strong> 
+          (Swinburne University of Technology program) and 
+          <strong>SHANGYA CONSULTANCY</strong>.
+        </p>
+      </section>
+    </footer>
   </body>
 </html>

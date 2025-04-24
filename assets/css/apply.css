@@ -1,64 +1,78 @@
+.form-container {
+  max-width: 900px;
+  margin: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 form {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border-radius: 12px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
+  display: grid;
+  gap: 1rem;
+}
 
-  input,
-  select,
-  textarea {
-    padding: 0.75rem;
-    background-color: #ffffff;
-    border: 1px var(--primary-color) solid;
-    border-radius: 6px;
-    font-size: 1rem;
-    width: 100%;
-  }
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
-  textarea {
-    grid-column: span 2;
-    height: 100px;
-    resize: vertical;
-  }
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
 
-  .full-width {
-    grid-column: span 2;
-  }
+fieldset {
+  border: none;
+  padding: 0;
+}
 
-  fieldset {
-    grid-column: span 2;
-    border: none;
-    padding: 0;
-  }
+.gender-options {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  legend {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-  .checkbox-group {
-    display: flex;
-    flex-direction: column;
-    grid-column: span 2;
-    gap: 0.25rem;
-  }
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
 
-  .submit-btn {
-    grid-column: span 2;
-    padding: 0.75rem;
-    background: #007bff;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
 
-  .submit-btn:hover {
-    background: #0066cc;
-  }
+.submit-btn {
+  padding: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+label {
+  font-weight: 500;
+}
