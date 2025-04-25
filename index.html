@@ -3,82 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexcent Template</title>
-    <link rel="stylesheet" href="./assets/css/typography.css" />
-    <link rel="stylesheet" href="./assets/css/hero.css" />
-    <link rel="stylesheet" href="./assets/css/clients.css" />
-    <link rel="stylesheet" href="./assets/css/features.css" />
+    <title>SHANGYA - Home</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
   <body>
     <header class="navbar">
-      <div class="container nav-content">
-        <div class="logo">SHANGYA</div>
+      <section class="container nav-content">
+        <section class="logo">SHANGYA</section>
+        <input type="checkbox" class="menu-toggle" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
         <nav class="nav-links">
           <a href="./index.html">Home</a>
           <a href="./jobs.html">Jobs</a>
-          <a href="./about.html">About</a>                                                                                     
+          <a href="./about.html">About</a>
           <a href="./enhancements.html">Enhancements</a>
           <a class="btn" href="./apply.html">Apply Jobs →</a>
         </nav>
-      </div>
-    </header>
+      </section>
+    </header>    
 
     <section class="hero">
-      <div class="hero-content fade-in">
-        <div class="hero-text">
+      <section class="hero-content fade-in">
+        <section class="hero-text">
           <h1>
             Welcome to <br /><span class="hero-span">ShangYa Consultancy</span>
           </h1>
           <p>Empowering careers for over 20 years.</p>
-          <a href="#" class="hero-section-btn">Register</a>
-        </div>
-        <div class="hero-image-container">
+          <a href="./pages/about_company.html" class="hero-section-btn">View More Details</a>
+        </section>
+        <section class="hero-image-container">
           <!-- Optional image goes here -->
           <!-- <img src="your-image.jpg" alt="Hero Image" class="hero-image" /> -->
-        </div>
-      </div>
+        </section>
+      </section>
     </section>    
 
     <section class="clients">
-      <div class="container slide-up">
+      <section class="container slide-up">
         <h2>Our Clients</h2>
         
-        <div class="client-card-gap">
+        <section class="client-card-gap">
           
-          <div class="cards-container">
-              <img class="client-logos" src="./assets/img/santan.png">
-          </div>
+          <section class="cards-container">
+              <a target="_blank" href="https://www.santan.com.my/"><img class="client-logos" src="./assets/img/clientlogo_santan.png"></a>
+          </section>
   
-          <div class="cards-container">
-            <div class="card">
-              <h2 class="card-title">TITLE</h2>
-              <p class="card-text">Lorem Ipsum</p>
-            </div>
-          </div>
-  
-          <div class="cards-container">
-            <div class="card">
-              <h2 class="card-title">TITLE</h2>
-              <p class="card-text">Lorem Ipsum</p>
-            </div>
-          </div>
-  
-          <div class="cards-container">
-            <div class="card">
-              <h2 class="card-title">TITLE</h2>
-              <p class="card-text">Lorem Ipsum</p>
-            </div>
-          </div>
+          <section class="cards-container">
+            <a target="_blank" href="https://www.agmo.group/"><img class="client-logos" src="./assets/img/clientlogo_agmo.png"></a>
+          </section>
+
+          <section class="cards-container">
+            <a target="_blank" href="https://ctoscredit.com.my/?srsltid=AfmBOop_57c2hAE-InjxY0v7ZenFxmWmqQYD4tBQ1bjm7LboKC92DDIY"><img class="client-logos" src="./assets/img/clientlogo_ctos.png"></a>
+          </section>
+
+          <section class="cards-container">
+            <a target="_blank" href="https://www.attrelogix.com/#about"><img class="client-logos" src="./assets/img/clientlogo_attrelogix.png"></a>
+          </section>
         
-        </div>
+        </section>
+
+        <section class="client-card-gap bottom-row">
+          
+          <section class="cards-container">
+            <a target="_blank" href="https://shopee.com.my/kkv_living.my"><img class="client-logos" src="./assets/img/clientlogo_KKV.svg"></a>
+          </section>
   
-        <div class="client-logos">
-          <img src="https://via.placeholder.com/80x40" alt="">
-          <img src="https://via.placeholder.com/80x40" alt="">
-          <img src="https://via.placeholder.com/80x40" alt="">
-        </div>
+          <section class="cards-container">
+            <a target="_blank" href="https://globalkiara.com/"><img class="client-logos" src="./assets/img/clientlogo_globalkiara.png"></a>
+          </section>
+
+          <section class="cards-container">
+            <a target="_blank" href="https://www.arbberhad.com/"><img class="client-logos" src="./assets/img/clientlogo_arb-logo.png"></a>
+          </section>
+        
+        </section>
   
     </section>
 
@@ -147,8 +150,48 @@
     </div>
   </section>
 
-    <footer>
-      <h1>lee pae</h1>
+    <footer class="footer">
+      <section class="footer-grid">
+        <section class="brand">
+          <img src="./assets/img/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
+          <h2>Team Techtonic</h2>
+          <p class="tagline">Innovating with passion</p>
+        </section>
+    
+        <section class="developers">
+          <h3>Developers</h3>
+          <ul>
+            <li>Thura Zaw</li>
+            <li>Sai Lyan Hein</li>
+            <li>Thet Hein Aung</li>
+            <li>Krisvyn</li>
+          </ul>
+        </section>
+    
+        <section class="socials">
+          <h3>Follow Us</h3>
+          <nav class="icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </nav>
+        </section>
+    
+        <section class="cta">
+          <a href="./about.html" class="details-btn">View Developers' Details</a>
+        </section>
+      </section>
+    
+      <section class="disclaimer">
+        <p>
+          This project is a collaboration between 
+          <strong>INTI International College Subang</strong> 
+          (Swinburne University of Technology program) and 
+          <strong>SHANGYA CONSULTANCY</strong>.
+        </p>
+      </section>
     </footer>
+    
   </body>
 </html>

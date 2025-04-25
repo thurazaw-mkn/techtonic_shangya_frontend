@@ -2,16 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexcent Template</title>
     <link rel="stylesheet" href="./assets/css/typography.css" />
+    <link rel="stylesheet" href="./assets/css/about-developers.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/about.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
+
   <body>
     <header class="navbar">
-      <div class="container nav-content">
-        <div class="logo">SHANGYA</div>
+      <section class="container nav-content">
+        <section class="logo">SHANGYA</section>
+        <input type="checkbox" class="menu-toggle" id="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
         <nav class="nav-links">
           <a href="./index.html">Home</a>
           <a href="./jobs.html">Jobs</a>
@@ -19,11 +29,11 @@
           <a href="./enhancements.html">Enhancements</a>
           <a class="btn" href="./apply.html">Apply Jobs →</a>
         </nav>
-      </div>
+      </section>
     </header>
 
     <section class="about-hero">
-      <div class="container fade-in">
+      <section class="container fade-in">
         <h1>About Us</h1>
         <p class="subtitle">20+ years of shaping careers and lives</p>
         <p>
@@ -31,68 +41,236 @@
           and agency, offering a range of innovative solutions including
           recruitment, talent outsourcing, training, HR consulting, and more...
         </p>
-      </div>
+      </section>
     </section>
 
-    <section class="what-we-do slide-up">
-      <div class="container">
-        <h2>What We Do</h2>
-        <p>
-          Drawing from our well-proven track record, we are proud to emphasize
-          that our services and business practices are substantially enriched by
-          these key components...
-        </p>
-      </div>
-    </section>
+    <section class="about-team container fade-in">
+      <section class="about-team-section">
+        <div class="team-photo">
+          <img
+            class="team-photo-img"
+            src="../assets/img/kmkl.jpg"
+            alt="Team Photo"
+          />
+        </div>
 
-    <section class="services fade-in">
-      <div class="container">
-        <h2>Our Services</h2>
-        <div class="service-cards">
-          <div class="card">
-            <h3>01 Executive Search</h3>
-            <p>
-              Custom-tailored recruitment for niche roles, sourcing top-tier
-              C-level talent and exceptional professionals.
-            </p>
+        <div class="team-info-container">
+          <div class="team-info-text">
+            <div class="team-info-section">
+              <h4>Team Name: Techtonic</h4>
+            </div>
+            <div class="team-info-section">
+              <h4>Team ID: 122345</h4>
+            </div>
+            <div class="team-info-section">
+              <h4>Team Description: LEE lH</h4>
+            </div>
           </div>
-          <div class="card">
-            <h3>02 General Staffing</h3>
-            <p>
-              Comprehensive service for junior to mid-level positions, including
-              experienced professionals and fresh graduates.
-            </p>
-          </div>
-          <div class="card">
-            <h3>03 Bulk Hiring</h3>
-            <p>
-              Rapid onboarding for high-turnover industries like BPO, retail,
-              and F&B.
-            </p>
-          </div>
-          <div class="card">
-            <h3>04 Payroll Services</h3>
-            <p>
-              Precise payroll management, tax compliance, and financial insights
-              for operational efficiency.
-            </p>
-          </div>
-          <div class="card">
-            <h3>05 Training & Development</h3>
-            <p>
-              Customized programs to enhance workforce skills and ensure
-              professional growth.
-            </p>
-          </div>
-          <div class="card">
-            <h3>06 Recruitment Process Outsourcing (RPO)</h3>
-            <p>
-              End-to-end recruitment process management to optimize hiring while
-              maintaining the human touch.
-            </p>
+
+          <div class="team-logo">
+            <img src="../assets/img/teamlogo_techtonic.png" alt="Team Logo" />
           </div>
         </div>
-      </div>
+      </section>
+
+      <section class="team-cards-section">
+        <h1 class="title">Meet Our Team</h1>
+
+        <div class="team-card">
+          <div class="info">
+            <h2>Thura Zaw</h2>
+            <p><em>Creative Director</em></p>
+            <hr />
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="info-right">
+            <h2>Sai Lyan Hein</h2>
+            <p><em>Creative Director</em></p>
+            <hr />
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="info">
+            <h2>Thet Hein Aung</h2>
+            <p><em>Creative Director</em></p>
+            <hr />
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="info-right">
+            <h2>Krisvyn</h2>
+            <p><em>Creative Director</em></p>
+            <hr />
+          </div>
+        </div>
+      </section>
     </section>
+
+    <hr />
+
+    <h4 class="slide-up">Our Time Table</h4>
+    <p class="timetable-caption slide-up">
+      Weekly schedule for our team members
+    </p>
+
+    <table class="table-gg slide-up">
+      <tr>
+        <th></th>
+        <th>08:00</th>
+        <th>09:00</th>
+        <th>10:00</th>
+        <th>11:00</th>
+        <th>12:00</th>
+        <th>13:00</th>
+        <th>14:00</th>
+        <th>15:00</th>
+        <th>16:00</th>
+        <th>17:00</th>
+      </tr>
+
+      <tr>
+        <td>MON</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>TNE10006C1<br />[G-LT3]<br />[LECTURE]</td>
+        <td>TNE10006C1<br />[G-LT3]<br />[LECTURE]</td>
+        <td>COS10009C1<br />[G-LT3]<br />[LECTURE]</td>
+        <td>COS10009C1<br />[G-LT3]<br />[LECTURE]</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr class="sec-color">
+        <td>TUE</td>
+        <td></td>
+        <td></td>
+        <td>COS10026C1<br />[F_CUBE4&5]<br />[LECTURE]</td>
+        <td>COS10026C1<br />[F_CUBE4&5]<br />[LECTURE]</td>
+        <td>COS10009C1<br />[C-L2-MAC2]<br />[PRACTICAL]</td>
+        <td>COS10009C1<br />[C-L2-MAC2]<br />[PRACTICAL]</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>WED</td>
+        <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
+        <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
+        <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          COS10004C1<br />[F-CUBE1&2]<br />[LECTURE & <br />
+          PRACTICAL]
+        </td>
+        <td>
+          COS10004C1<br />[F-CUBE1&2]<br />[LECTURE & <br />
+          PRACTICAL]
+        </td>
+      </tr>
+
+      <tr class="sec-color">
+        <td>THU</td>
+        <td></td>
+        <td></td>
+        <td>MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE]</td>
+        <td>MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE]</td>
+        <td></td>
+        <td></td>
+        <td>
+          COS10004C1<br />[A-L4-CSC2]<br />[LECTURE & <br />
+          PRACTICAL]
+        </td>
+        <td>
+          COS10004C1<br />[A-L4-CSC2]<br />[LECTURE & <br />
+          PRACTICAL]
+        </td>
+        <td>COS10026C1<br />[A-L4-CSC2]<br />[PRACTICAL]</td>
+        <td>COS10026C1<br />[A-L4-CSC2]<br />[PRACTICAL]</td>
+      </tr>
+
+      <tr>
+        <td>FRI</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE & <br />
+          PRACTICAL]
+        </td>
+        <td>
+          MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE & <br />
+          PRACTICAL]
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <footer class="footer">
+      <section class="footer-grid">
+        <section class="brand">
+          <img
+            src="./assets/img/teamlogo_techtonic.png"
+            alt="Team Logo"
+            class="team-logo"
+          />
+          <h2>Team Techtonic</h2>
+          <p class="tagline">Innovating with passion</p>
+        </section>
+
+        <section class="developers">
+          <h3>Developers</h3>
+          <ul>
+            <li>Thura Zaw</li>
+            <li>Sai Lyan Hein</li>
+            <li>Thet Hein Aung</li>
+            <li>Krisvyn</li>
+          </ul>
+        </section>
+
+        <section class="socials">
+          <h3>Follow Us</h3>
+          <nav class="icons">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </nav>
+        </section>
+
+        <section class="cta">
+          <a href="./about.html" class="details-btn"
+            >View Developers' Details</a
+          >
+        </section>
+      </section>
+
+      <section class="disclaimer">
+        <p>
+          This project is a collaboration between
+          <strong>INTI International College Subang</strong>
+          (Swinburne University of Technology program) and
+          <strong>SHANGYA CONSULTANCY</strong>.
+        </p>
+      </section>
+    </footer>
   </body>
 </html>

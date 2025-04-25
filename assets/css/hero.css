@@ -40,6 +40,9 @@
 
 .hero-text h1 {
   text-transform: uppercase;
+  animation-name: left-to-right;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
 
 .hero-section-btn {
@@ -54,7 +57,7 @@
 }
 
 .hero-section-btn:hover {
-  background-color: #27ae60;
+  background-color: var(--dark-color);
 }
 .hero-text p {
   width: 50%;
@@ -94,7 +97,15 @@
   position: relative;
   left: 124px;
   animation-name: image-container-animation;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.appear-up{
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 1.5s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 
@@ -108,6 +119,28 @@
     opacity: 1;
   }
 }
+
+
+@keyframes left-to-right {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes appear{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
 
 @media (max-width: 768px) {
   .hero {
