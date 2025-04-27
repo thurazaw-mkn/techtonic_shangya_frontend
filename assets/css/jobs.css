@@ -1,13 +1,14 @@
 .search-section {
-  background-color: var(--white-color);
-  padding-bottom: 10px;
-  padding-top: 20px;
+  background-color: var(--dark-color);
+  padding-bottom: 120px;
+  padding-top: 120px;
+  height: auto;
 }
 
 .card-section {
   padding-top: 0px;
   background-color: #f5f5f5;
-
+  padding-top: 100px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,22 +21,34 @@
   justify-content: center;
 }
 
+.center-item h1 {
+  font-size: 100px;
+  color: var(--white-color);
+}
+.space-search-bar {
+  display: flex;
+  gap: 20px;
+  width: 50%;
+}
+
 .space-item {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .search-bar {
   background-color: var(--background-color);
   border: solid;
 
-  border-color: var(--white-color);
-  width: 300px;
+  border-color: var(--primary-color);
+  width: 50px;
   height: 50px;
   border-radius: 20px;
   padding: 3px 1.6rem;
   padding-top: 5px;
   font-size: 15px;
+  box-shadow: 0px 0px 0px 5px var(--primary-color);
 }
 .search-bar:hover {
   border-color: var(--dark-color);
@@ -45,12 +58,12 @@
 }
 
 input::placeholder {
-  font-size: 15px;
+  font-size: 20px;
   color: var(--gray-color);
 }
 
 .tag-section {
-  padding-top: 20px;
+  padding-top: 60px;
   padding-bottom: 50px;
 }
 
@@ -59,7 +72,7 @@ input::placeholder {
   border: 0.5px solid var(--dark-color);
   background-color: white;
   border-radius: 20px;
-  font-size: medium;
+  font-size: 25px;
   font-weight: 500;
   color: var(--dark-color);
   transition: 0.3s;
@@ -71,6 +84,7 @@ input::placeholder {
 input[type="checkbox"]:checked + .find-job-section-tag {
   background-color: var(--dark-color);
   color: var(--white-color);
+  box-shadow: 0px 0px 5px 5px var(--primary-color);
 }
 
 input[type="checkbox"]:hover + .find-job-section-tag {
@@ -83,10 +97,7 @@ input[type="checkbox"]:hover + .find-job-section-tag {
   border: solid;
   border-color: var(--dark-color);
   border-width: 7px;
-}
-.company-name {
-  text-align: center;
-  margin-top: 5%;
+  border-radius: 20px;
 }
 
 .search-btn {
@@ -98,7 +109,7 @@ input[type="checkbox"]:hover + .find-job-section-tag {
   border: none;
   font-weight: 500;
   text-align: center;
-  font-size: medium;
+  font-size: 25px;
 }
 
 .search-btn:hover {
@@ -115,17 +126,19 @@ input[type="checkbox"]:hover + .find-job-section-tag {
   margin-right: 1rem;
   margin-top: 2rem;
   font-size: medium;
-  height: 200px;
+  height: 170px;
   overflow-y: hidden;
 }
 .job-card {
   background-color: var(--white-color);
   border-radius: 20px;
   padding: 20px;
-  margin: 5rem;
+  margin: 20px auto;
   box-shadow: 5px 5px 5px var(--gray-color);
   position: relative;
   overflow: hidden;
+  width: 90%;
+  max-width: var(--container-width);
 }
 
 .card-text {
@@ -183,5 +196,55 @@ details[open] summary::after {
   .search-section {
     flex: 1 1 100%;
     max-width: 100%;
+  }
+}
+
+@media (max-width: 660px) {
+  .search-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: auto;
+  }
+  .space-search-bar {
+    gap: 20px;
+    width: 90%;
+  }
+  .search-bar{
+    height: 30px;
+  }
+
+  .center-item h1 {
+    font-size: 40px;
+  }
+
+  .job-card-header {
+    display: block;
+    text-align: center;
+  }
+
+  .space-card-text {
+    display: block;
+    height: 370px;
+    overflow: scroll;
+  }
+
+  .card-text {
+    display: blo;
+  }
+
+  .search-btn,
+  .find-job-section-tag {
+    font-size: 15px;
+  }
+
+  input::placeholder {
+    font-size: 15px;
+  }
+  .tag-section {
+    padding-top: 20px;
+  }
+  .search-section {
+    padding-top: 30px;
+    padding-bottom: 20px;
   }
 }
