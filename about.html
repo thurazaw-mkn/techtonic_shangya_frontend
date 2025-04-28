@@ -11,7 +11,7 @@
   <header class="navbar">
     <section class="container nav-content">
       <section class="logo">SHANGYA</section>
-      <input type="checkbox" class="menu-toggle" id="menu-toggle">
+      <input type="checkbox" class="menu-toggle" id="menu-toggle" />
       <label for="menu-toggle" class="hamburger">
         <span></span>
         <span></span>
@@ -20,7 +20,7 @@
       <nav class="nav-links">
         <a href="./index.html">Home</a>
         <a href="./jobs.html">Jobs</a>
-        <a href="./about.html">About</a>
+        <a href="./about.html" class="active">About</a>
         <a href="./enhancements.html">Enhancements</a>
         <a class="btn" href="./apply.html">Apply Jobs →</a>
       </nav>
@@ -36,9 +36,7 @@
           <h4>Team ID: 122345</h4>
           <h4>Team Description: LEE lH</h4>
         </div>
-
         <div class="divider"></div>
-
         <div class="team-mission">
           <img src="./assets/img/teamlogo_techtonic.png" alt="Team Logo" />
         </div>
@@ -46,29 +44,67 @@
     </section>
   </section>
 
-  <section class="about-team container fade-in">
-    <section class="about-team-section">
-      <div class="team-photo">
-        <img class="team-photo-img" src="../assets/img/kmkl.jpg" alt="Team Photo" />
+  <section class="team-group-section">
+    <div class="team-group-wrapper container fade-in">
+      <div class="team-group-content">
+        <h2 class="team-group-title">Our Team Together</h2>
+        <p class="team-group-description">Collaborating to create innovative solutions that transform ideas into
+          reality. Our diverse skills and perspectives come together to deliver exceptional results.</p>
+        <div class="team-group-stats">
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Team Members</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Dedication</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Creativity</span>
+          </div>
+        </div>
       </div>
-    </section>
+      <div class="team-group-photo-wrapper">
+        <div class="team-group-photo">
+          <img src="./assets/img/kmkl.jpg" alt="Team Techtonic Group Photo" class="team-group-img">
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="team-cards-section">
+  <section class="about-team">
+    <section class="team-cards-section container fade-in">
       <h1 class="title">Meet Our Team</h1>
 
       <div class="team-card">
         <div class="info">
           <h2>Thura Zaw</h2>
           <p><em>Creative Director</em></p>
-          <hr />
+          <div class="card-content">
+            <p>Specializes in UI/UX design and frontend development with a passion for creating intuitive user
+              experiences.</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
 
       <div class="team-card">
-        <div class="info-right">
+        <div class="info">
           <h2>Sai Lyan Hein</h2>
           <p><em>Creative Director</em></p>
-          <hr />
+          <div class="card-content">
+            <p>Expert in visual design and branding with a keen eye for detail and aesthetic excellence.</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
 
@@ -76,15 +112,30 @@
         <div class="info">
           <h2>Thet Hein Aung</h2>
           <p><em>Creative Director</em></p>
-          <hr />
+          <div class="card-content">
+            <p>Focuses on innovative design solutions and creative problem-solving for complex projects.</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
 
       <div class="team-card">
-        <div class="info-right">
+        <div class="info">
           <h2>Krisvyn</h2>
           <p><em>Creative Director</em></p>
-          <hr />
+          <div class="card-content">
+            <p>Brings a unique perspective to design challenges with expertise in multimedia and interactive
+              experiences.</p>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -92,116 +143,118 @@
 
   <hr />
 
-  <section class="container">
+  <section class="about-timetable-section">
+    <section class="container">
 
-    <h4 class="slide-up">Our Time Table</h4>
-    <p class="timetable-caption slide-up">
-      Weekly schedule for our team members
-    </p>
+      <h4 class="slide-up">Our Time Table</h4>
+      <p class="timetable-caption slide-up">
+        Weekly schedule for our team members
+      </p>
 
-    <table class="table-gg slide-up">
-      <tr>
-        <th></th>
-        <th>08:00</th>
-        <th>09:00</th>
-        <th>10:00</th>
-        <th>11:00</th>
-        <th>12:00</th>
-        <th>13:00</th>
-        <th>14:00</th>
-        <th>15:00</th>
-        <th>16:00</th>
-        <th>17:00</th>
-      </tr>
+      <table class="table-gg slide-up">
+        <tr>
+          <th></th>
+          <th>08:00</th>
+          <th>09:00</th>
+          <th>10:00</th>
+          <th>11:00</th>
+          <th>12:00</th>
+          <th>13:00</th>
+          <th>14:00</th>
+          <th>15:00</th>
+          <th>16:00</th>
+          <th>17:00</th>
+        </tr>
 
-      <tr>
-        <td>MON</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>TNE10006C1<br />[G-LT3]<br />[LECTURE]</td>
-        <td>TNE10006C1<br />[G-LT3]<br />[LECTURE]</td>
-        <td>COS10009C1<br />[G-LT3]<br />[LECTURE]</td>
-        <td>COS10009C1<br />[G-LT3]<br />[LECTURE]</td>
-        <td></td>
-        <td></td>
-      </tr>
+        <tr>
+          <td>MON</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>TNE10006C1<br />[G-LT3]<br />[LECTURE]</td>
+          <td>TNE10006C1<br />[G-LT3]<br />[LECTURE]</td>
+          <td>COS10009C1<br />[G-LT3]<br />[LECTURE]</td>
+          <td>COS10009C1<br />[G-LT3]<br />[LECTURE]</td>
+          <td></td>
+          <td></td>
+        </tr>
 
-      <tr class="sec-color">
-        <td>TUE</td>
-        <td></td>
-        <td></td>
-        <td>COS10026C1<br />[F_CUBE4&5]<br />[LECTURE]</td>
-        <td>COS10026C1<br />[F_CUBE4&5]<br />[LECTURE]</td>
-        <td>COS10009C1<br />[C-L2-MAC2]<br />[PRACTICAL]</td>
-        <td>COS10009C1<br />[C-L2-MAC2]<br />[PRACTICAL]</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>WED</td>
-        <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
-        <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
-        <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          COS10004C1<br />[F-CUBE1&2]<br />[LECTURE & <br />
-          PRACTICAL]
-        </td>
-        <td>
-          COS10004C1<br />[F-CUBE1&2]<br />[LECTURE & <br />
-          PRACTICAL]
-        </td>
-      </tr>
+        <tr class="sec-color">
+          <td>TUE</td>
+          <td></td>
+          <td></td>
+          <td>COS10026C1<br />[F_CUBE4&5]<br />[LECTURE]</td>
+          <td>COS10026C1<br />[F_CUBE4&5]<br />[LECTURE]</td>
+          <td>COS10009C1<br />[C-L2-MAC2]<br />[PRACTICAL]</td>
+          <td>COS10009C1<br />[C-L2-MAC2]<br />[PRACTICAL]</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>WED</td>
+          <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
+          <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
+          <td>TNE10006C1<br />[G-CISCO LAB]<br />[PRACTICAL]</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            COS10004C1<br />[F-CUBE1&2]<br />[LECTURE & <br />
+            PRACTICAL]
+          </td>
+          <td>
+            COS10004C1<br />[F-CUBE1&2]<br />[LECTURE & <br />
+            PRACTICAL]
+          </td>
+        </tr>
 
-      <tr class="sec-color">
-        <td>THU</td>
-        <td></td>
-        <td></td>
-        <td>MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE]</td>
-        <td>MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE]</td>
-        <td></td>
-        <td></td>
-        <td>
-          COS10004C1<br />[A-L4-CSC2]<br />[LECTURE & <br />
-          PRACTICAL]
-        </td>
-        <td>
-          COS10004C1<br />[A-L4-CSC2]<br />[LECTURE & <br />
-          PRACTICAL]
-        </td>
-        <td>COS10026C1<br />[A-L4-CSC2]<br />[PRACTICAL]</td>
-        <td>COS10026C1<br />[A-L4-CSC2]<br />[PRACTICAL]</td>
-      </tr>
+        <tr class="sec-color">
+          <td>THU</td>
+          <td></td>
+          <td></td>
+          <td>MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE]</td>
+          <td>MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE]</td>
+          <td></td>
+          <td></td>
+          <td>
+            COS10004C1<br />[A-L4-CSC2]<br />[LECTURE & <br />
+            PRACTICAL]
+          </td>
+          <td>
+            COS10004C1<br />[A-L4-CSC2]<br />[LECTURE & <br />
+            PRACTICAL]
+          </td>
+          <td>COS10026C1<br />[A-L4-CSC2]<br />[PRACTICAL]</td>
+          <td>COS10026C1<br />[A-L4-CSC2]<br />[PRACTICAL]</td>
+        </tr>
 
-      <tr>
-        <td>FRI</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE & <br />
-          PRACTICAL]
-        </td>
-        <td>
-          MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE & <br />
-          PRACTICAL]
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
+        <tr>
+          <td>FRI</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE & <br />
+            PRACTICAL]
+          </td>
+          <td>
+            MAT2208C1<br />[F-CUBE4&5]<br />[LECTURE & <br />
+            PRACTICAL]
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
 
+    </section>
   </section>
 
   <footer class="footer">
