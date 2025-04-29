@@ -239,27 +239,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .team-card {
   position: relative;
-  background-color: var(--white-color);
   transition: all 0.3s ease;
   perspective: 1000px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .team-card .info h2 {
-  color: #222222;
   margin-bottom: 0.5rem;
 }
 
-.team-card .info p {
-  color: #333333; /* Darker text for paragraphs - was likely too light */
-}
-
-.team-card .info em {
-  color: #444444; /* Darker text for emphasized text - was likely too light */
-}
-
 .team-card .card-content p {
-  color: #333333; /* Ensure paragraph text is dark enough */
   line-height: 1.5;
 }
 
