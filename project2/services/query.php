@@ -60,17 +60,18 @@ function get_eoi()
     }
 
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare(" SELECT * FROM eoi");
+    $stmt = $conn->prepare("SELECT * FROM eoi");
 
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $admin = $result->fetch_assoc();
+    // Fetch all rows
+    $eoi_data = $result->fetch_all(MYSQLI_ASSOC);
 
     $stmt->close();
     $conn->close();
 
-    return $admin;
+    return $eoi_data;
 }
 
 function get_eoi_with_filter($job_reference_number, $first_name, $last_name) 
