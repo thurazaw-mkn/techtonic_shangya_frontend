@@ -1,5 +1,4 @@
 <?php
-<?php
 require_once(__DIR__ . '/../settings.php');
 
 // Admin authentication (SHA-256 password)
