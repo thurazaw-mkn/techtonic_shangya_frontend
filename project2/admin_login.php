@@ -6,6 +6,8 @@ $message = "";
 // Session timeout in seconds (1 hour)
 $timeout_duration = 3600;
 
+
+// call query function to get admin by credentials
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];

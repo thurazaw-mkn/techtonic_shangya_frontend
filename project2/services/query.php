@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../settings.php');
+require_once(__DIR__ . './helpers.php');
 
 // Admin authentication (SHA-256 password)
 function get_admin_by_credentials($username, $password)
@@ -129,7 +130,7 @@ function get_job_with_filter($position_keyword, $location_keyword, $page_size, $
 }
 
 // Create job
-function create_job($job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description, $created_at, $created_by, $updated_at, $updated_by)
+function create_job($job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description)
 {
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
@@ -138,8 +139,11 @@ function create_job($job_ref_number, $title, $position, $location, $requirement_
         return null;
     }
 
-    $stmt = $conn->prepare("INSERT INTO jobs (job_ref_lnumber, title, position, location, requirement_essential, requirement_preferable, salary_range, description, created_at, created_by, updated_at, updated_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("isssssssssss", $job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description, $created_at, $created_by, $updated_at, $updated_by);
+    $created_at = $_POST[get_datetime_now()];
+    $created_by = $_POST[$_SESSION['display_name']];
+
+    $stmt = $conn->prepare("INSERT INTO jobs (job_ref_number, title, position, location, requirement_essential, requirement_preferable, salary_range, description, created_at, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("isssssssss", $job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description, $created_at, $created_by);
     $success = $stmt->execute();
 
     $stmt->close();

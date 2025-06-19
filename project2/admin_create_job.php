@@ -1,4 +1,8 @@
 <?php
+require_once(__DIR__ . '/services/query.php');
+require_once(__DIR__ . '/services/helpers.php');
+$message = "";
+
 session_start();
 
 // Session timeout in seconds (1 hour)
@@ -19,10 +23,35 @@ if (
 
 // Update last activity time
 $_SESSION['last_activity'] = time();
+
+
+// call query function to get admin by credentials
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $job_ref_number = $_POST['job_ref_number'];
+    $title = $_POST['title'];
+    $position = $_POST['position'];
+    $location = $_POST['location'];
+    $requirement_essential = $_POST['requirement_essential'];
+    $requirement_preferable = $_POST['requirement_preferable'];
+    $salary_range = $_POST['salary_range'];
+    $description = $_POST['description'];
+    $created_by = $_POST[$_SESSION['username']];
+
+    $create_job = create_job($job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description);
+
+    if ($create_job) {
+        $message = "<p style='color:blue; text-align:center;'>successfully create job.</p>";
+        header("Location: admin_create_job.php");
+        exit();
+    } else {
+        $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
+    }
+}
 ?>
 
+<!-- HTML Form -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8" />
@@ -32,10 +61,12 @@ $_SESSION['last_activity'] = time();
     <meta name="keywords" content="SHANGYA CONSULTANCY, INTI College subang, swinburne" />
     <meta name="author" content="Techtonic" />
     <link rel="icon" type="image/x-icon" href="./images/shangya-logo.avif" />
-    <title>SHANGYA - Admin Dashboard</title>
+    <title>SHANGYA - Admin Create Job</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/responsive.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="styles/create_job.css"> -->
+
 </head>
 
 <body>
@@ -55,22 +86,62 @@ $_SESSION['last_activity'] = time();
                 <span></span>
             </label>
             <nav class="nav-links">
-                <a href="./index.php" class="active">Home</a>
-                <a href="./admin_create_job.php">Jobs Create</a>
-                <a href="./about.php">JobApplications</a>
-                <a href="./admin_dashboard.php" style="color: red !important"><?php echo htmlspecialchars($_SESSION['display_name']); ?></a>
+                <a href="./index.php">Home</a>
+                <a href="./admin_create_job.php" class="active">Create Jobs</a>
+                <a href="./about.php">Job Applications</a>
+                <h5 href="./admin_dashboard.php"
+                    style="color: red !important"><?php echo htmlspecialchars($_SESSION['display_name']); ?></h5>
                 <a class="btn" href="admin_logout.php">Logout →</a>
             </nav>
         </section>
     </header>
 
-    <section class="hero">
-        <section class="hero-content fade-in">
-            <h1>Welcome, <?php echo htmlspecialchars($_SESSION['display_name']); ?>!</h1>
-            <p>Your role: <strong><?php echo htmlspecialchars($_SESSION['role']); ?></strong></p>
-            <p>This is the admin dashboard.</p>
-            <a href="logout.php">Logout</a>
+    <section class="apply-hero">
+        <div class="apply-hero-bg"></div>
+        <section class="container fade-in">
+            <div class="apply-hero-content">
+                <h1>Create for your needed!</h1>
+                <div class="hero-divider"></div>
+                <p class="subtitle">20+ years of shaping careers and lives</p>
+                <p class="hero-description">
+                    At ShangYa Consultancy, we're a dynamic full-service staffing provider
+                    and agency, offering a range of innovative solutions including
+                    recruitment, talent outsourcing, training, HR consulting, and more...
+                </p>
+            </div>
         </section>
+    </section>
+
+    <section class="form-container container slide-up">
+        <div class="form-title">Create Jobs Application</div>
+        <form method="post" action="admin_create_job.php">
+            <input type="text" name="job_ref_number" placeholder="Job Reference Number" pattern="[A-Za-z0-9]{5}"
+                required />
+
+            <div class="name-fields">
+                <input type="text" name="title" placeholder="Title" maxlength="20" pattern="[A-Za-z]+"
+                    required />
+                <input type="text" name="position" placeholder="Positin" maxlength="20" pattern="[A-Za-z]+"
+                    required />
+            </div>
+
+            <input type="text" name="location" placeholder="Location" required />
+            
+            <input type="text" name="requirement_essential" placeholder="Requirement (Essential)"
+                required />
+
+            <input type="text" name="requirement_preferable" placeholder="Requirement (Preferable)"
+                required />
+
+            <input type="text" name="salary_range" placeholder="Salary Range"
+                required />
+
+            <textarea name="description" placeholder="Describe your Position"></textarea>
+
+            <button type="submit" class="submit-btn">
+                <span>Create Job Application</span>
+            </button>
+        </form>
     </section>
 
     <footer class="footer">
