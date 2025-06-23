@@ -88,6 +88,19 @@
                         <li>Timestamp fields enable tracking of data creation and updates</li>
                     </ul>
                 </article>
+                <article class="enhancement-card">
+                    <div class="enhancement-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3>Manager Access & EOI Control</h3>
+                    <p>Enhances security and control over EOI management for HR Managers</p>
+                    <ul class="enhancement-features">
+                        <li>Managers can sort EOI records by selected fields for easier review</li>
+                        <li>Secure registration with unique usernames and password rules</li>
+                        <li>Login access is blocked after multiple failed attempts for protection</li>
+                    </ul>
+                </article>
+
 
 
             </div>
