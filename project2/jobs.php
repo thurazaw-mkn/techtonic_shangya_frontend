@@ -1,3 +1,16 @@
+<?php
+require_once(__DIR__ . '/services/query.php');
+require_once(__DIR__ . '/helpers/helpers.php');
+
+// Get search keywords from GET or POST if you want to support search
+$position_keyword = isset($_GET['position']) ? $_GET['position'] : '';
+$location_keyword = isset($_GET['location']) ? $_GET['location'] : '';
+
+// Get jobs from database
+$jobs = get_job($position_keyword, $location_keyword);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,36 +28,7 @@
 </head>
 
 <body>
-  <header class="navbar">
-    <section class="container nav-content">
-      <div class="logo">
-        <a href="./index.php" aria-label="Shangya Home">
-          <section class="logo">
-            <a href="./index.php"
-              ><img src="./images/shangya-logo.avif" alt="shangya-logo"
-            /></a>
-          </section>
-        </a>
-      </div>
-      <input type="checkbox" class="menu-toggle" id="menu-toggle" />
-      <label
-        for="menu-toggle"
-        class="hamburger"
-        aria-label="Toggle navigation menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <nav class="nav-links">
-        <a href="./index.php">Home</a>
-        <a href="./jobs.php" class="active">Jobs</a>
-        <a href="./about.php">About</a>
-        <a href="./enhancements.php">Enhancements</a>
-        <a class="btn" href="./apply.php">Apply Jobs →</a>
-      </nav>
-    </section>
-  </header>
+  <?php include 'header.inc'; ?>
 
   <section class="find-job-section">
     <section class="search-section">
@@ -52,319 +36,82 @@
         <h1 style="font-size: 2.5rem;">Find Jobs</h1>
       </article>
 
-      <section class="center-item">
-        <section class="space-search-bar">
-          <input class="search-bar" type="text" placeholder="Search Jobs..." />
-          <input class="search-bar" type="text" placeholder="Search Location..." />
+      <form class="space-search-bar" method="get" action="jobs.php">
+        <section class="center-item">
+          <section class="space-search-bar">
+            <input name="position" class="search-bar" type="text" placeholder="Search Jobs..." />
+            <input name="location" class="search-bar" type="text" placeholder="Search Location..." />
+          </section>
         </section>
-      </section>
 
-      <section class="center-item space-item tag-section">
-        <label>
-          <input type="checkbox" />
-          <span class="find-job-section-tag">Freelance</span>
-        </label>
-        <label>
-          <input type="checkbox" />
-          <span class="find-job-section-tag">Fulltime</span> </label><label>
-          <input type="checkbox" />
-          <span class="find-job-section-tag">Part-Time</span></label>
-        <label>
-          <input type="checkbox" />
-          <span class="find-job-section-tag">Internship</span>
-        </label>
-        <button class="search-btn" type="button">Search</button>
-      </section>
+        <section class="center-item space-item tag-section">
+          <label>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Freelance</span>
+          </label>
+          <label>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Fulltime</span> </label><label>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Part-Time</span></label>
+          <label>
+            <input type="checkbox" />
+            <span class="find-job-section-tag">Internship</span>
+          </label>
+          <button class="search-btn" type="submit">Search</button>
+        </section>
+      </form>
     </section>
   </section>
-  
+
   <section class="container card-section">
-    <section class="job-card">
-      <article class="space-item job-card-header">
-        <img class="company-logo" src="https://cdn.theorg.com/0aca310b-49eb-408c-803d-43fe89a84cc7_thumb.jpg"
-          alt="company logo" />
-        <h3>Robert Walters</h3>
-      </article>
-      <section class="space-card-text">
-        <article class="card-text">
-          <h4>Offer postion</h4>
-          <p>SENIOR IT SPECIALIST</p>
-        </article>
-        <article class="card-text">
-          <h4>Location</h4>
-          <p>Selangor</p>
-        </article>
-        <article class="card-text">
-          <h4>Requirement</h4>
-          <p>-</p>
-        </article>
-      </section>
-      <section class="card-footer">
-        <p>Posted 3 days ago</p>
-        <a href="./apply.php" class="apply-button">Apply Now</a>
-      </section>
-      <details>
-        <summary>More Info - ⌄ </summary>
-        <article class="dropdown-content">
-          <h6>Job description</h6>
-          <p>Ensure local IT infrastructure aligns with Group IT standards and adheres to Group IT Security policies. Conduct regular assessments and audits to minimize technology-related disruptions to local business operations.</p>
-          
-          <h6>SENIOR IT SPECIALIST</h6>
-          
-          <p>Location: Selangor</p>
-          
-          <p>Keywords: IT, Senior, Specialist, Technology, Infrastructure</p>
-          
-          <p>Our client is seeking a Senior IT Specialist to ensure that all local IT infrastructure structure adheres to Group IT standards and complies with Group IT Security policies. This role is based in Selangor and offers a competitive salary. The successful candidate will be responsible for minimizing any technology-related disruptions to local business operations by conducting regular assessments and audits.</p>
-          <ul>
-            <li>Competitive salary</li>
-            <li>Location: Selangor</li>
-            <li>Opportunity to work with a global team</li>
-          </ul>
-          
-          <h6>What you'll do:</h6>
-          
-          <p>As a Senior IT Specialist, you will play a crucial role in ensuring the smooth running of our client's IT infrastructure. You will drive the development and implementation of IT systems and applications, including Microsoft Power Automate and Power Apps in Office 365. Your expertise will be vital in leading digitalization initiatives through training, integrating new solutions, and aligning with global strategies. You will also manage LAN/WAN/Internet networks by administering, troubleshooting, and collaborating with internal teams and external vendors/ISPs.</p>
-          <ul>
-            <li>Drive the development and implementation of IT systems and applications</li>
-            <li>Lead digitalization initiatives by conducting training, integrating new solutions, and aligning with global strategies</li>
-            <li>Ensure compliance with IT regulations, governance, and standards while proactively monitoring and reporting on IT services</li>
-            <li>Maintain local servers, switches, and Azure Cloud IT equipment</li>
-            <li>Manage LAN/WAN/Internet networks</li>
-            <li>Coordinate with IT vendors for system installations, device setups, and troubleshooting</li>
-            <li>Stay updated with technological advancements, recommend solutions, and implement optimized systems</li>
-            <li>Offer 2nd-level IT support to emerging markets</li>
-            <li>Oversee and maintain IT and network infrastructure</li>
-            <li>Provide end-user support for IT-related issues</li>
-          </ul>
-          
-          <h6>What you bring:</h6>
-          
-          <p>The ideal candidate for the Senior IT Specialist role brings a wealth of experience in the field of Information Technology. With at least three to five years' of experience in a similar role under your belt, you have strong knowledge of IT and network infrastructure. Your proficiency in Microsoft Azure, SharePoint, OneDrive, and Office 365 sets you apart from others. You are experienced in developing process flows using Microsoft Power Automate and Power Apps. Your ability to manage IT projects independently demonstrates your commitment to delivering results.</p>
-          <ul>
-            <li>Bachelor's or Diploma in Computer Science, Information Technology, or a related field</li>
-            <li>Minimum 3-5 years of experience in a similar IT role</li>
-            <li>Strong knowledge of IT and network infrastructure</li>
-            <li>Proficiency in Microsoft Azure, SharePoint, OneDrive, and Office 365</li>
-            <li>Experience in developing process flows using Microsoft Power Automate and Power Apps</li>
-            <li>Proven ability to manage IT projects independently</li>
-            <li>IT Business Partnering mindset with a clear understanding of digitalization demands</li>
-            <li>ITIL Foundation certification is preferred</li>
-          </ul>
-          
-          <h6>What sets this company apart:</h6>
-          
-          <p>Our client offers continuous learning opportunities and training activities through on-the-job training and their in-house learning academy. They provide career development opportunities across multiple disciplines and geographies. They pride themselves on a supportive and inclusive company culture where you can be your authentic self.</p>
-          
-          <h6>What's next:</h6>
-          
-          <p>Ready to take the next step in your IT career? Apply now!</p>
-          
-          <p>Apply Today by clicking on the link!</p>
-          
-          <p>Do note that we will only be in touch if your application is shortlisted.</p>
-          
-          <p>Agensi Pekerjaan Robert Walters Sdn Bhd<br>
-          Business Registration Number : 729828-T<br>
-          License Number : JTKSM 423C</p>
-        </article>
-      </details>
-    </section>
-    <section class="job-card">
-      <article class="space-item job-card-header">
-        <img class="company-logo" src="https://res.cloudinary.com/dv6hrcluu/f_auto,fl_progressive,q_auto,c_scale,w_auto,dpr_auto/production_legacy_organization_images/en84mfzgfirwng4gimwl"
-          alt="company logo" />
-        <h3 class="company-name">NTT DATA North America</h3>
-      </article>
-      <section class="space-card-text">
-        <article class="card-text">
-          <h4>Offer position</h4>
-          <p>IT Service Desk Support</p>
-        </article>
-        <article class="card-text">
-          <h4>Location</h4>
-          <p>Wilayah Persekutuan Kuala Lumpur (MY-14)</p>
-        </article>
-        <article class="card-text">
-          <h4>Requirement</h4>
-          <p>--</p>
-        </article>
-      </section>
-      <section class="card-footer">
-        <p>Posted 3 days ago</p>
-        <a href="./apply.php" class="apply-button">Apply Now</a>
-      </section>
-      <details>
-        <summary>More Info - ⌄ </summary>
-        <article class="dropdown-content"><h6>Job description</h6>
-          <p>Req ID: 322052</p>
-          
-          <p>NTT DATA strives to hire exceptional, innovative and passionate individuals who want to grow with us. If you want to be part of an inclusive, adaptable, and forward-thinking organization, apply now.</p>
-          
-          <p>We are currently seeking a IT Service Desk Support - Mandarin Speaking to join our team in Full Remote - Malaysia, Wilayah Persekutuan Kuala Lumpur (MY-14), Malaysia (MY).</p>
-          
-          <h6>In these roles you will be responsible for:</h6>
-          <p>Provide exceptional IT Service Desk or helpdesk support, guidance and training to end-users for various IT devices, applications or processes.</p>
-          <ul>
-            <li>Record, Update and Escalate Support issues to the next level in a timely manner.</li>
-            <li>Support all IT onboarding activities for end-users</li>
-            <li>Work with our internal IT Teams on system testing, integration and maintenance.</li>
-            <li>Engage in discovery of new IT business tools, to support our business users as well as our internal IT Team.</li>
-            <li>Seek, Suggest, Evaluate and implement process and Technology improvements.</li>
-            <li>Willing to learn & grow in other IT Business areas</li>
-          </ul>
-          
-          <h6>Requirements for this role include:</h6>
-          <ul>
-            <li>Excellent English, Mandarin written and verbal communication skills.</li>
-            <li>Exceptional customer service skills.</li>
-            <li>Any fresh graduate level to 1 year of experience with basic IT knowledge of software and hardware.</li>
-            <li>IT software and hardware troubleshooting knowledge and skills (Win 10, MacOS, iOS, Android, Google Suite and Microsoft Environment)</li>
-            <li>Great Team player</li>
-            <li>Great communication skills, comfortable working with various stakeholders</li>
-            <li>Strong troubleshooting skills, bug finding, and resolution</li>
-            <li>Ability to work independently within a diverse global team</li>
-          </ul>
-          
-          <h6>Preferences: - Optional (nice-to-have's)</h6>
-          <ul>
-            <li>ITIL foundation certified</li>
-            <li>Flexible</li>
-            <li>Willing to work in a Rotational 24*7 The shift timings can be changed as per client requirements. Additionally, resources may have to do overtime and work on weekend's basic business requirement.</li>
-          </ul>
-          
-          <h6>About NTT DATA</h6>
-          
-          <p>NTT DATA is a $30 billion trusted global innovator of business and technology services. We serve 75% of the Fortune Global 100 and are committed to helping clients innovate, optimize and transform for long-term success. As a Global Top Employer, we have diverse experts in more than 50 countries and a robust partner ecosystem of established and start-up companies. Our services include business and technology consulting, data and artificial intelligence, industry solutions, as well as the development, implementation and management of applications, infrastructure and connectivity. We are one of the leading providers of digital and AI infrastructure in the world. NTT DATA is a part of NTT Group, which invests over $3.6 billion each year in R&D to help organizations and society move confidently and sustainably into the digital future. Visit us at us.nttdata.com</p></article>
-      </details>
-    </section>
-    <section class="job-card">
-      <article class="space-item job-card-header">
-        <img class="company-logo" src="https://1000logos.net/wp-content/uploads/2017/03/Nestle-Logo.jpg"
-          alt="company logo" />
-        <h3 class="company-name">Nestle Operational Services Worldwide SA</h3>
-      </article>
-      <section class="space-card-text">
-        <article class="card-text">
-          <h4>Offer postion</h4>
-          <p>Regional Buyer - IT</p>
-        </article>
-        <article class="card-text">
-          <h4>Location</h4>
-          <p>Kuala Lumpur</p>
-        </article>
-        <article class="card-text">
-          <h4>Requirement</h4>
-          <p>-</p>
-        </article>
-      </section>
-      <section class="card-footer">
-        <p>Posted 3 days ago</p>
-        <a href="./apply.php" class="apply-button">Apply Now</a>
-      </section>
-      <details>
-        <summary>More Info - ⌄ </summary>
-        <article class="dropdown-content">
-          <h6>Job description</h6>
-          
-          <h6>Position Snapshot:</h6>
-          <ul>
-            <li>Location: Kuala Lumpur, Malaysia</li>
-            <li>Type of contract: Full time, permanent</li>
-            <li>Passionate and dynamic international working environment in the world's largest FMCG.</li>
-            <li>Genuine opportunities for career development, training and personal development.</li>
-            <li>Flexible work policies in terms of working hours and working from home.</li>
-          </ul>
-          
-          <h6>Position Summary:</h6>
-          
-          <p>An opportunity currently exists for an experienced Regional Buyer - IT to join our team responsible for managing commercial and sourcing activities for IT services used by Nestlé worldwide.</p>
-          
-          <p>Reporting to the Global Category Lead, your primary responsibility will be to implement the category strategy on a regional & global level - utilizing strategic sourcing processes, tools and policies. You will also manage RFx processes & take ownership of managing key projects (eg process optimization, e-auction).</p>
-          
-          <h6>Procurement at Nestlé:</h6>
-          
-          <p>As a strategic partner to the business, we help Nestle achieve sustainable growth by ensuring responsibly sourced supply and value creation. Located in hubs in Switzerland, Panama and Malaysia, our people provide a range of services, including managing the procurement of raw materials, packaging, indirect materials and other services. We also support Nestle businesses across the world to manage local spend.</p>
-          
-          <p>For you, this will be the opportunity to become a true strategic partner – delivering sustainable value and working with the business, for the business.</p>
-          
-          <h6>A day in the life of a Regional Buyer for IT:</h6>
-          <ul>
-            <li>Preparing and executing negotiation events - seeking best total cost of ownership (TCO) contracts and beneficial commercial agreements with suppliers as approved by the Procurement Managers.</li>
-            <li>Contributing to the global sourcing strategy by implementing the communication and supplier management plan.</li>
-            <li>Consolidating and analyzing data to support the development of effective strategies within IT Procurement.</li>
-            <li>Identifying opportunities and managing projects to achieve objectives, ensuring alignment with strategic goals and delivering measurable results.</li>
-            <li>Managing relationships with various stakeholders to integrate category plans and achieve results.</li>
-          </ul>
-          
-          <h6>What will make you successful:</h6>
-          <ul>
-            <li>Previous Procurement experience managing a regional or global portfolio, ideally within IT or Digital Marketing categories.</li>
-            <li>Experience in risk management, responsible sourcing, and supplier relationship management.</li>
-            <li>Demonstrated success in delivering competitive advantage through the development and implementation of sourcing strategies.</li>
-            <li>Excellent communication skills with the ability to influence and collaborate with individuals across a complex organization.</li>
-            <li>Curiosity, high learning speed and the agility to navigate ambiguity.</li>
-            <li>Fluency in English (written and verbal) is essential. Multi-lingual abilities will be advantageous.</li>
-          </ul>
-          
-          <p>Don't miss this opportunity to join us and work with diverse teams in an agile and diverse context! Apply Now!!</p>
-          
-          <p>We look forward to receiving your resume in English</p>
-          
-          <p>#nestradecareer #nestlecareer #beaforceforgood</p>
-          
-          <p>Kuala Lumpur, Malaysia</p>
-          
-          <p>At Nestlé, we want to help shape a better and healthier world, inspire people to live healthier lives and deliver impact at a scale and pace that makes a difference. We do this by fostering a diverse, friendly, supportive, and collaborative environment, that creates positive disruption, embraces innovation, and empowers people and teams to win.</p>
-          
-          <p>We aim to hire friendly, respectful, inspiring people who care about the people's lives that we touch every single day.</p>
-        </article>
-      </details>
-    </section>
+    <?php if ($jobs && count($jobs) > 0): ?>
+      <?php foreach ($jobs as $job): ?>
+        <section class="job-card">
+          <article class="space-item job-card-header">
+            <img class="company-logo" src="https://cdn.theorg.com/0aca310b-49eb-408c-803d-43fe89a84cc7_thumb.jpg"
+              alt="company logo" />
+            <h3><?php echo htmlspecialchars($job['company_name'] ?? ''); ?></h3>
+          </article>
+          <section class="space-card-text">
+            <article class="card-text">
+              <h4>Offer position</h4>
+              <p><?php echo htmlspecialchars($job['position']); ?></p>
+            </article>
+            <article class="card-text">
+              <h4>Location</h4>
+              <p><?php echo htmlspecialchars($job['location']); ?></p>
+            </article>
+            <article class="card-text">
+              <h4>Requirement</h4>
+              <h5>Essential</h5>
+              <p><?php echo htmlspecialchars($job['requirement_essential']); ?></p>
+              <hr />
+              <h5>Preferable</h5>
+              <p><?php echo htmlspecialchars($job['requirement_preferable']); ?></p>
+            </article>
+          </section>
+          <section class="card-footer">
+            <p>Posted : <?php echo htmlspecialchars(time_ago($job['created_at'])); ?></p>
+            <p>Salary Range : <?php echo htmlspecialchars($job['salary_range']); ?></p>
+            <p>Job Reference Number : <?php echo htmlspecialchars($job['job_ref_number']); ?></p>
+            <a href="./apply.php?job_ref_number=<?php echo urlencode($job['job_ref_number']); ?>" class="apply-button">Apply Now</a>
+          </section>
+          <details>
+            <summary>More Info - ⌄ </summary>
+            <article class="dropdown-content">
+              <h6>Job description</h6>
+              <p><?php echo nl2br(htmlspecialchars($job['description'])); ?></p>
+            </article>
+          </details>
+        </section>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <p style="text-align:center;">No jobs found.</p>
+    <?php endif; ?>
   </section>
 
-  <footer class="footer">
-    <section class="footer-grid">
-      <section class="brand">
-        <img src="./images/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
-        <h2>Team Techtonic</h2>
-        <p class="tagline">Innovating with passion</p>
-      </section>
-
-      <section class="developers">
-        <h3>Developers</h3>
-        <ul>
-          <li>Thura Zaw</li>
-          <li>Sai Lyan Hein</li>
-          <li>Thet Hein Aung</li>
-          <li>Krisvyn</li>
-        </ul>
-      </section>
-
-      <section class="socials">
-        <h3>Follow Us</h3>
-        <nav class="icons">
-          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@techtonictz" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </nav>
-      </section>
-
-      <section class="cta">
-        <a href="./about.php" class="details-btn">View Developers' Details</a>
-      </section>
-    </section>
-
-    <section class="disclaimer">
-      <p>
-        This project is a collaboration between
-        <strong>INTI International College Subang</strong>
-        (Swinburne University of Technology program) and
-        <strong>SHANGYA CONSULTANCY</strong>.
-      </p>
-    </section>
-  </footer>
+  <?php include 'footer.inc'; ?>
 </body>
 
 </html>

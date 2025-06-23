@@ -4,14 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta
-    name="description"
-    content="This project is a collaboration between INTI International College Subang (Swinburne University of Technology program) and SHANGYA CONSULTANCY"
-  />
-  <meta
-    name="keywords"
-    content="SHANGYA CONSULTANCY, INTI College subang, swinburne"
-  />
+  <meta name="description"
+    content="This project is a collaboration between INTI International College Subang (Swinburne University of Technology program) and SHANGYA CONSULTANCY" />
+  <meta name="keywords" content="SHANGYA CONSULTANCY, INTI College subang, swinburne" />
   <meta name="author" content="Techtonic" />
   <link rel="icon" type="image/x-icon" href="./images/shangya-logo.avif" />
   <title>SHANGYA - About</title>
@@ -21,36 +16,7 @@
 </head>
 
 <body>
-  <header class="navbar">
-    <section class="container nav-content">
-      <div class="logo">
-        <a href="./index.php" aria-label="Shangya Home">
-          <section class="logo">
-            <a href="./index.php"
-              ><img src="./images/shangya-logo.avif" alt="shangya-logo"
-            /></a>
-          </section>
-        </a>
-      </div>
-      <input type="checkbox" class="menu-toggle" id="menu-toggle" />
-      <label
-        for="menu-toggle"
-        class="hamburger"
-        aria-label="Toggle navigation menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <nav class="nav-links">
-        <a href="./index.php">Home</a>
-        <a href="./jobs.php">Jobs</a>
-        <a href="./about.php" class="active">About</a>
-        <a href="./enhancements.php">Enhancements</a>
-        <a class="btn" href="./apply.php">Apply Jobs →</a>
-      </nav>
-    </section>
-  </header>
+  <?php include 'header.inc'; ?>
 
   <section class="about-hero">
     <section class="container fade-in">
@@ -105,15 +71,22 @@
 
       <div class="team-card">
         <div class="info">
+
           <h2>Thura Zaw</h2>
-          <p><em>Project Management</em></p>
+          <p><em>Project Manager</em></p>
           <div class="card-content">
-            <p>"I manage the overall structure and flow of the project, ensuring that all components, from design to development, are well-organized, on schedule, and aligned with our objectives. My role involves coordinating tasks, maintaining clean project architecture, and facilitating smooth collaboration across the team."</p>
+            <p>"As the Project Manager, I coordinated the overall structure, timelines, and team workflow for the
+              project. I ensured effective collaboration across all feature areas, including user roles like Admins,
+              Companies, and Super Admins while keeping development aligned with our objectives and deadlines."</p>
           </div>
+
           <div class="social-links">
-            <a href="https://www.linkedin.com/in/thura-zaw-6803b6172/" target="_blank" aria-label="Thura Zaw LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/thurazaw-mkn" target="_blank" aria-label="Thura Zaw GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.facebook.com/share/1EfcirWn4h/?mibextid=wwXIfr" target="_blank" aria-label="Thura Zaw Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/thura-zaw-6803b6172/" target="_blank"
+              aria-label="Thura Zaw LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/thurazaw-mkn" target="_blank" aria-label="Thura Zaw GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/share/1EfcirWn4h/?mibextid=wwXIfr" target="_blank"
+              aria-label="Thura Zaw Facebook"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
       </div>
@@ -121,14 +94,18 @@
       <div class="team-card">
         <div class="info">
           <h2>Sai Lyan Hein</h2>
-          <p><em>Responsive Design</em></p>
+          <p><em>Backend Logic & Enhancements</em></p>
           <div class="card-content">
-            <p>"I ensure our designs are fully responsive, adapting seamlessly to different screen sizes and devices. My focus is on maintaining usability, consistency, and visual harmony across desktops, tablets, and mobile phones, so every user gets a smooth, accessible experience no matter how they access the site."</p>
+            <p>"I was responsible for implementing the backend logic and database interactions that power the core
+              functionality of our project. I also designed and organized the Enhancement Pages to clearly present key
+              system improvements and feature highlights."</p>
           </div>
           <div class="social-links">
             <a href="#" target="_blank" aria-label="Sai Lyan Hein LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/SaiLyanHein" target="_blank" aria-label="Sai Lyan Hein GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.facebook.com/share/1PujLVZ3wY/" target="_blank" aria-label="Sai Lyan Hein Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://github.com/SaiLyanHein" target="_blank" aria-label="Sai Lyan Hein GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/share/1PujLVZ3wY/" target="_blank" aria-label="Sai Lyan Hein Facebook"><i
+                class="fab fa-facebook"></i></a>
           </div>
         </div>
       </div>
@@ -136,14 +113,19 @@
       <div class="team-card">
         <div class="info">
           <h2>Thet Hein Aung</h2>
-          <p><em>UI/UX Design</em></p>
+          <p><em>HR Managers EOI & Database Design</em></p>
           <div class="card-content">
-            <p>"I, UI/UX designer, focus on creating interfaces that are both visually appealing and highly functional. My goal is to design user experiences that are intuitive, accessible, and responsive, ensuring users can navigate and interact with ease across all devices."</p>
+            <p>"I developed the HR Managers’ EOI feature, enabling efficient handling of job applications and
+              submissions. I also designed the database structure to ensure smooth data relationships, integrity, and
+              scalability across all system modules."</p>
           </div>
           <div class="social-links">
-            <a href="www.linkedin.com/in/thet-hein-aung-a2390a362" target="_blank" aria-label="Thet Hein Aung LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/sinister-damian" target="_blank" aria-label="Thet Hein Aung GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.facebook.com/share/1EJtUDr48h/?mibextid=wwXIfr" target="_blank" aria-label="Thet Hein Aung Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="www.linkedin.com/in/thet-hein-aung-a2390a362" target="_blank"
+              aria-label="Thet Hein Aung LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/sinister-damian" target="_blank" aria-label="Thet Hein Aung GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/share/1EJtUDr48h/?mibextid=wwXIfr" target="_blank"
+              aria-label="Thet Hein Aung Facebook"><i class="fab fa-facebook"></i></a>
           </div>
         </div>
       </div>
@@ -151,14 +133,19 @@
       <div class="team-card">
         <div class="info">
           <h2>Krisvyin A/L Selvaraja</h2>
-          <p><em>Animations and Transactions</em></p>
+          <p><em>Job Page & Frontend for New Pages</em></p>
           <div class="card-content">
-            <p>"I’m responsible for creating smooth animations and transitions that enhance both the visual appeal and usability of the website. My focus is on designing motion that guides users, highlights key actions, and makes interactions feel natural and responsive."</p>
+            <p>"I developed the Job Page feature, allowing employers to create and post job listings seamlessly. I also
+              contributed to the frontend development of newly added pages, ensuring a consistent and user-friendly
+              interface throughout the site."</p>
           </div>
           <div class="social-links">
-            <a href="https://www.linkedin.com/in/krisvyin-selvaraja-4857b12a3" target="_blank" aria-label="Krisvyin LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/krisvyin12" target="_blank" aria-label="Krisvyin GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.facebook.com/share/166QqcL8eq/" target="_blank" aria-label="Krisvyin Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/krisvyin-selvaraja-4857b12a3" target="_blank"
+              aria-label="Krisvyin LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/krisvyin12" target="_blank" aria-label="Krisvyin GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/share/166QqcL8eq/" target="_blank" aria-label="Krisvyin Facebook"><i
+                class="fab fa-facebook"></i></a>
           </div>
         </div>
       </div>
@@ -281,48 +268,8 @@
     </section>
   </section>
 
-  <footer class="footer">
-    <section class="footer-grid">
-      <section class="brand">
-        <img src="./images/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
-        <h2>Team Techtonic</h2>
-        <p class="tagline">Innovating with passion</p>
-      </section>
+  <?php include 'footer.inc'; ?>
 
-      <section class="developers">
-        <h3>Developers</h3>
-        <ul>
-          <li>Thura Zaw</li>
-          <li>Sai Lyan Hein</li>
-          <li>Thet Hein Aung</li>
-          <li>Krisvyn</li>
-        </ul>
-      </section>
-
-      <section class="socials">
-        <h3>Follow Us</h3>
-        <nav class="icons">
-          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@techtonictz" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </nav>
-      </section>
-
-      <section class="cta">
-        <a href="./about.php" class="details-btn">View Developers' Details</a>
-      </section>
-    </section>
-
-    <section class="disclaimer">
-      <p>
-        This project is a collaboration between
-        <strong>INTI International College Subang</strong>
-        (Swinburne University of Technology program) and
-        <strong>SHANGYA CONSULTANCY</strong>.
-      </p>
-    </section>
-  </footer>
 </body>
 
 </html>

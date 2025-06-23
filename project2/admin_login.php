@@ -6,6 +6,8 @@ $message = "";
 // Session timeout in seconds (1 hour)
 $timeout_duration = 3600;
 
+
+// call query function to get admin by credentials
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -13,12 +15,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admin = get_admin_by_credentials($username, $password);
 
     if ($admin) {
+
+      if($admin['role'] == 'superadmin' || $admin['role'] == 'admin') {
+
         $_SESSION['username'] = $admin['username'];
         $_SESSION['role'] = $admin['role'];
         $_SESSION['display_name'] = $admin['display_name'];
         $_SESSION['last_activity'] = time();
         header("Location: admin_dashboard.php");
         exit();
+      }else if($admin['role'] == 'employer'){
+        $_SESSION['username'] = $admin['username'];
+        $_SESSION['role'] = $admin['role'];
+        $_SESSION['display_name'] = $admin['display_name'];
+        $_SESSION['last_activity'] = time();
+        header("Location: manage.php");
+        exit();
+      }
     } else {
         $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
     }
@@ -77,6 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           style="padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;" />
         <button type="submit"
           style="padding: 12px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.2s;">Login</button>
+        <button type="buttton" onclick="window.location.href='employer_signup.php'"
+          style="padding: 12px; background: green; color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.2s;">Sign Up as Employer</button>
       </form>
       <section class="hero-image-container">
         <img
@@ -86,49 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
   </section>
 
-  <footer class="footer">
-    <section class="footer-grid">
-      <section class="brand">
-        <img src="./images/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
-        <h2>Team Techtonic</h2>
-        <p class="tagline">Innovating with passion</p>
-      </section>
-
-      <section class="developers">
-        <h3>Developers</h3>
-        <ul>
-          <li>Thura Zaw</li>
-          <li>Sai Lyan Hein</li>
-          <li>Thet Hein Aung</li>
-          <li>Krisvyn</li>
-        </ul>
-      </section>
-
-      <section class="socials">
-        <h3>Follow Us</h3>
-        <nav class="icons">
-          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@techtonictz" target="_blank" aria-label="YouTube"><i
-              class="fab fa-youtube"></i></a>
-          <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </nav>
-      </section>
-
-      <section class="cta">
-        <a href="./about.php" class="details-btn">View Developers' Details</a>
-      </section>
-    </section>
-
-    <section class="disclaimer">
-      <p>
-        This project is a collaboration between
-        <strong>INTI International College Subang</strong>
-        (Swinburne University of Technology program) and
-        <strong>SHANGYA CONSULTANCY</strong>.
-      </p>
-    </section>
-  </footer>
+  <?php include 'footer.inc'; ?>
 </body>
 
 </html>
