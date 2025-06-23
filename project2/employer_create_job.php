@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ . '/services/query.php');
-require_once(__DIR__ . '/services/helpers.php');
 $message = "";
 
 session_start();
@@ -24,6 +23,25 @@ if (
 // Update last activity time
 $_SESSION['last_activity'] = time();
 
+// Role filter: only allow 'employer'
+if (!in_array($_SESSION['role'], ['employer'])) {
+    session_unset();
+    session_destroy();
+    header("Location: admin_login.php");
+    exit();
+}
+
+
+// generate a random job reference number
+function generate_job_ref_number() {
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $length = 5; // Length of the job reference number
+    $job_ref_number = '';
+    for ($i = 0; $i < $length; $i++) {
+        $job_ref_number .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $job_ref_number;
+}
 
 // call query function to get admin by credentials
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,13 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $requirement_preferable = $_POST['requirement_preferable'];
     $salary_range = $_POST['salary_range'];
     $description = $_POST['description'];
-    $created_by = $_POST[$_SESSION['username']];
+    $created_by = $_SESSION['username'];
 
-    $create_job = create_job($job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description);
+    $create_job = create_job($created_by,$job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description, $created_by);
 
     if ($create_job) {
         $message = "<p style='color:blue; text-align:center;'>successfully create job.</p>";
-        header("Location: admin_create_job.php");
+        header("Location: employer_create_job.php");
         exit();
     } else {
         $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
@@ -86,11 +104,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span></span>
             </label>
             <nav class="nav-links">
-                <a href="./index.php">Home</a>
-                <a href="./admin_create_job.php" class="active">Create Jobs</a>
-                <a href="./about.php">Job Applications</a>
-                <h5 href="./admin_dashboard.php"
-                    style="color: red !important"><?php echo htmlspecialchars($_SESSION['display_name']); ?></h5>
+                <a href="./manage.php">EOI</a>
+                <a href="./employer_jobs.php">Jobs</a>
+                <a href="./employer_create_job.php" class="active">Create Job</a>
+                <a href="./employer_jobs.php" style="color: red !important"><?php echo htmlspecialchars($_SESSION['display_name']); ?></a>
                 <a class="btn" href="admin_logout.php">Logout →</a>
             </nav>
         </section>
@@ -114,15 +131,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <section class="form-container container slide-up">
         <div class="form-title">Create Jobs Application</div>
-        <form method="post" action="admin_create_job.php">
-            <input type="text" name="job_ref_number" placeholder="Job Reference Number" pattern="[A-Za-z0-9]{5}"
-                required />
+        <form method="post" action="employer_create_job.php">
+            <input type="text" name="job_ref_number" placeholder="Job Reference Number" value="<?php echo generate_job_ref_number(); ?>"
+                required readonly />
 
             <div class="name-fields">
-                <input type="text" name="title" placeholder="Title" maxlength="20" pattern="[A-Za-z]+"
-                    required />
-                <input type="text" name="position" placeholder="Positin" maxlength="20" pattern="[A-Za-z]+"
-                    required />
+                <input type="text" name="title" placeholder="Title" required />
+                <input type="text" name="position" placeholder="Positin" required />
             </div>
 
             <input type="text" name="location" placeholder="Location" required />
@@ -144,49 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </section>
 
-    <footer class="footer">
-        <section class="footer-grid">
-            <section class="brand">
-                <img src="./images/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
-                <h2>Team Techtonic</h2>
-                <p class="tagline">Innovating with passion</p>
-            </section>
-
-            <section class="developers">
-                <h3>Developers</h3>
-                <ul>
-                    <li>Thura Zaw</li>
-                    <li>Sai Lyan Hein</li>
-                    <li>Thet Hein Aung</li>
-                    <li>Krisvyn</li>
-                </ul>
-            </section>
-
-            <section class="socials">
-                <h3>Follow Us</h3>
-                <nav class="icons">
-                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@techtonictz" target="_blank" aria-label="YouTube"><i
-                            class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </nav>
-            </section>
-
-            <section class="cta">
-                <a href="./about.php" class="details-btn">View Developers' Details</a>
-            </section>
-        </section>
-
-        <section class="disclaimer">
-            <p>
-                This project is a collaboration between
-                <strong>INTI International College Subang</strong>
-                (Swinburne University of Technology program) and
-                <strong>SHANGYA CONSULTANCY</strong>.
-            </p>
-        </section>
-    </footer>
+    <?php include 'footer.inc'; ?>
 </body>
 
 </html>
