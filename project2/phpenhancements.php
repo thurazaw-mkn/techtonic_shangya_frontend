@@ -89,11 +89,85 @@
                     </ul>
                 </article>
 
-               
+
             </div>
         </div>
     </section>
+    <section class="file-structure">
+        <div class="container">
+            <h2>Project Structure</h2>
+            <div class="structure-container">
+                <div class="structure-card">
+                    <div class="structure-icon">
+                        <i class="fas fa-folder-tree"></i>
+                    </div>
+                    <h3>File Organization</h3>
+                    <pre class="file-tree">
+project1/
+├── about.php
+├── about_company.php
+├── apply.php
+├── enhancements.php
+├── index.php
+├── jobs.php
+├── images/
+│   ├── clientlogo_KKV.svg
+│   ├── clientlogo_agmo.png
+│   ├── clientlogo_arb-logo.png
+│   ├── clientlogo_attrelogix.png
+│   ├── clientlogo_ctos.png
+│   ├── clientlogo_globalkiara.png
+│   ├── clientlogo_santan.png
+│   ├── office_work.jpg
+│   ├── shangya-logo.avif
+│   ├── team-group-photo.png
+│   ├── teamlogo_techtonic.png
+│   └── yahar_dashboard.png
+├── styles/
+│   ├── images/
+│   │   └── crossline.png
+│   ├── responsive.css
+│   └── style.css
+</pre>
+                </div>
 
+                <div class="structure-card">
+                    <div class="structure-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>CSS Variables (:root)</h3>
+                    <pre class="css-root">
+:root {
+  /* Colors */
+  --primary-color: #455a64;
+  --secondary-color: #cfd8dc;
+  --text-color: #333;
+  --heading-color: #222;
+  --white-color: #fff;
+  --background-color: #f9f9f9;
+
+  /* Typography */
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* Spacing */
+  --container-width: 1200px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Shadows */
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  --hover-shadow: 0 20px 40px rgba(0,0,0,0.1);
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
