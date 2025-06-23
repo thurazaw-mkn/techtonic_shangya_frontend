@@ -260,10 +260,9 @@ $eois = get_eoi_with_filter($username, $job_reference_number, $first_name, $last
                                 <form method="post" action="" style="display:inline;">
                                     <input type="hidden" name="change_status_id" value="<?php echo $eoi['eoi_number']; ?>">
                                     <select name="new_status" class="status-select" onchange="this.form.submit()">
-                                        <option value="pending" <?php if ($eoi['status'] == 'pending') echo 'selected'; ?>>Pending</option>
-                                        <option value="reviewed" <?php if ($eoi['status'] == 'reviewed') echo 'selected'; ?>>Reviewed</option>
-                                        <option value="accepted" <?php if ($eoi['status'] == 'accepted') echo 'selected'; ?>>Accepted</option>
-                                        <option value="rejected" <?php if ($eoi['status'] == 'rejected') echo 'selected'; ?>>Rejected</option>
+                                        <option value="New" <?php if ($eoi['status'] == 'New') echo 'selected'; ?>>New</option>
+                                        <option value="Current" <?php if ($eoi['status'] == 'Current') echo 'selected'; ?>>Current</option>
+                                        <option value="Final" <?php if ($eoi['status'] == 'Final') echo 'selected'; ?>>Final</option>
                                     </select>
                                 </form>
                             </td>

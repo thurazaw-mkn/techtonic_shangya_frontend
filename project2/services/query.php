@@ -32,7 +32,7 @@ function get_admin_by_credentials($username, $password)
     return $admin;
 }
 
-function companies_signup($name, $industry, $email, $description, $head_office_address)
+function companies_signup($name, $industry, $email, $description, $head_office_address, $photo_str)
 {
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
@@ -73,15 +73,16 @@ function companies_signup($name, $industry, $email, $description, $head_office_a
 
     // 2. Insert into companies
     $created_at = date('Y-m-d H:i:s');
-    $stmt = $conn->prepare("INSERT INTO companies (name, industry, description, head_office_address, created_at, is_deleted) VALUES (?, ?, ?, ?, ?, false)");
+    $stmt = $conn->prepare("INSERT INTO companies (name, industry, description, head_office_address, created_at, is_deleted, photo_str) VALUES (?, ?, ?, ?, ?, false, ?)");
     if (!$stmt) {
         return "Prepare failed: " . $conn->error;
     }
-    $stmt->bind_param("sssss", $name, $industry, $description, $head_office_address, $created_at,);
+    $stmt->bind_param("ssssss", $name, $industry, $description, $head_office_address, $created_at, $photo_str);
     if (!$stmt->execute()) {
+        $error = $stmt->error;
         $stmt->close();
         $conn->close();
-        return "Failed to create company.";
+        return "Failed to create company: $error";
     }
     $company_id = $stmt->insert_id;
     $stmt->close();
@@ -505,6 +506,33 @@ function process_eoi($job_ref_number, $first_name, $last_name, $address_street, 
         return null;
     }
 
+    // 0. Create EOI table if it does not exist
+    $createTableSQL = "
+        CREATE TABLE IF NOT EXISTS eoi (
+            eoi_number INT AUTO_INCREMENT PRIMARY KEY,
+            job_ref_number VARCHAR(32) NOT NULL,
+            first_name VARCHAR(64) NOT NULL,
+            last_name VARCHAR(64) NOT NULL,
+            address_street VARCHAR(128) NOT NULL,
+            address_town VARCHAR(64) NOT NULL,
+            address_state VARCHAR(64) NOT NULL,
+            address_postcode VARCHAR(16) NOT NULL,
+            email VARCHAR(128) NOT NULL,
+            phone VARCHAR(32) NOT NULL,
+            skills TEXT,
+            other_skills TEXT,
+            status VARCHAR(32) DEFAULT 'New',
+            created_at DATETIME,
+            created_by VARCHAR(128),
+            updated_at DATETIME,
+            updated_by VARCHAR(128),
+            dob VARCHAR(32),
+            gender VARCHAR(16),
+            is_deleted BOOLEAN DEFAULT FALSE
+        )
+    ";
+    $conn->query($createTableSQL);
+
     // Get company email by joining jobs and companies
     $stmt = $conn->prepare(
         "SELECT admins.email 
@@ -530,7 +558,7 @@ function process_eoi($job_ref_number, $first_name, $last_name, $address_street, 
     // Insert EOI
     $created_at = get_datetime_now();
     $created_by = $first_name . ' ' . $last_name;
-    $status = 'pending';
+    $status = 'New';
 
     $stmt = $conn->prepare("INSERT INTO eoi (job_ref_number, first_name, last_name, address_street, address_town, address_state, address_postcode, email, phone, skills, other_skills, status, created_at, created_by, dob, gender, is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, false)");
     if (!$stmt) {
@@ -603,8 +631,13 @@ function get_job_by_company($username)
     }
     $stmt->close();
 
-    // 2. Get jobs for this company_id
-    $stmt = $conn->prepare("SELECT * FROM jobs WHERE company_id = ? AND is_deleted = false");
+    // 2. Get jobs for this company_id, including photo_str from companies
+    $stmt = $conn->prepare(
+        "SELECT jobs.*, companies.photo_str as company_photo_str
+         FROM jobs 
+         JOIN companies ON jobs.company_id = companies.id 
+         WHERE jobs.company_id = ? AND jobs.is_deleted = false"
+    );
     $stmt->bind_param("i", $company_id);
     $stmt->execute();
     $result = $stmt->get_result();

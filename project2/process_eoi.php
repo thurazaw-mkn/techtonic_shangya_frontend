@@ -3,6 +3,20 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Prevent direct access: only allow POST with required data
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['job_ref_number'])) {
+    header('Location: apply.php');
+    exit;
+}
+
+require_once(__DIR__ . '/services/query.php');
+require_once(__DIR__ . '/helpers/helpers.php');
+
+// ...rest of your code...
 
 require_once(__DIR__ . '/services/query.php');
 require_once(__DIR__ . '/helpers/helpers.php');
@@ -43,7 +57,7 @@ $skills = isset($_POST['skills']) ? implode(',', $_POST['skills']) : '';
 $other_skills = $_POST['other_skills'] ?? '';
 $created_at = get_datetime_now();
 $created_by = $first_name . ' ' . $last_name;
-$status = 'pending';
+$status = 'New';
 
 // Validation
 $errors = [];

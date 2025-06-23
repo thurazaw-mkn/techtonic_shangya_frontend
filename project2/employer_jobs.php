@@ -191,7 +191,7 @@ $jobs = get_job_by_company($username = $_SESSION['username']);
         <?php foreach ($jobs as $job): ?>
             <section class="job-card">
                 <article class="space-item job-card-header">
-                    <img class="company-logo" src="https://cdn.theorg.com/0aca310b-49eb-408c-803d-43fe89a84cc7_thumb.jpg"
+                    <img class="company-logo" src="<?php echo htmlspecialchars($job['company_photo_str']); ?>"
                         alt="company logo" />
                     <h3><?php echo htmlspecialchars($_SESSION['display_name']); ?></h3>
                 </article>
