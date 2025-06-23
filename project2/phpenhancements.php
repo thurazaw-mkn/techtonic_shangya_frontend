@@ -103,31 +103,56 @@
                     </div>
                     <h3>File Organization</h3>
                     <pre class="file-tree">
-project1/
-├── about.php
-├── about_company.php
-├── apply.php
-├── enhancements.php
-├── index.php
-├── jobs.php
+project2/
+├── .vscode/
+├── helpers/
+│   ├── constants.php
+│   └── helpers.php
 ├── images/
-│   ├── clientlogo_KKV.svg
 │   ├── clientlogo_agmo.png
 │   ├── clientlogo_arb-logo.png
 │   ├── clientlogo_attrelogix.png
 │   ├── clientlogo_ctos.png
-│   ├── clientlogo_globalkiara.png
+│   ├── clientlogo_globalklara.png
+│   ├── clientlogo_KKV.svg
 │   ├── clientlogo_santan.png
 │   ├── office_work.jpg
 │   ├── shangya-logo.avif
 │   ├── team-group-photo.png
-│   ├── teamlogo_techtonic.png
+│   ├── teamlogo_techtonix.png
 │   └── yahar_dashboard.png
+├── services/
+│   └── query.php
 ├── styles/
 │   ├── images/
 │   │   └── crossline.png
+│   ├── create_job.css
 │   ├── responsive.css
 │   └── style.css
+└── vendor/
+    ├── about_company.php
+    ├── about.php
+    ├── admin_admins.php
+    ├── admin_companies.php
+    ├── admin_dashboard.php
+    ├── admin_login.php
+    ├── admin_logout.php
+    ├── apply.php
+    ├── composer.json
+    ├── composer.lock
+    ├── employer_create_job.php
+    ├── employer_edit.php
+    ├── employer_jobs.php
+    ├── employer_signup.php
+    ├── enhancements.php
+    ├── enhancements2.php
+    ├── header.inc
+    ├── footer.inc
+    ├── index.php
+    ├── jobs.php
+    ├── phpenhancements.php
+    ├── process_eoi.php
+    └── settings.php
 </pre>
                 </div>
 
