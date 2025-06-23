@@ -96,7 +96,7 @@
         <div class="info">
 
           <h2>Thura Zaw</h2>
-          <p><em>Project Manager</em></p>
+          <p><em>User Management & Project Manager</em></p>
           <div class="card-content">
             <p>"As the Project Manager, I coordinated the overall structure, timelines, and team workflow for the
               project. I ensured effective collaboration across all feature areas, including user roles like Admins,
