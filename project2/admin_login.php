@@ -9,32 +9,59 @@ $timeout_duration = 3600;
 
 // call query function to get admin by credentials
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-    $admin = get_admin_by_credentials($username, $password);
+  // Get admin by username (for attempt logic)
+  $admin_row = get_admin_by_username($username);
 
-    if ($admin) {
-
-      if($admin['role'] == 'superadmin' || $admin['role'] == 'admin') {
-
-        $_SESSION['username'] = $admin['username'];
-        $_SESSION['role'] = $admin['role'];
-        $_SESSION['display_name'] = $admin['display_name'];
-        $_SESSION['last_activity'] = time();
-        header("Location: admin_dashboard.php");
-        exit();
-      }else if($admin['role'] == 'employer'){
-        $_SESSION['username'] = $admin['username'];
-        $_SESSION['role'] = $admin['role'];
-        $_SESSION['display_name'] = $admin['display_name'];
-        $_SESSION['last_activity'] = time();
-        header("Location: manage.php");
-        exit();
-      }
+  if ($admin_row) {
+    // Check if locked out (10 min lockout after 3 failed attempts)
+    if ($admin_row['login_attempts'] >= 3 && strtotime($admin_row['last_login_attempt']) > strtotime('-10 minutes')) {
+      $message = "<p style='color:red; text-align:center;'>Account locked due to too many failed attempts. Please check your email for a new password.</p>";
     } else {
-        $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
+      // Check credentials
+      $admin = get_admin_by_credentials($username, $password);
+      if ($admin) {
+        // Success: reset attempts
+        reset_login_attempts($username);
+
+        $_SESSION['username'] = $admin['username'];
+        $_SESSION['role'] = $admin['role'];
+        $_SESSION['display_name'] = $admin['display_name'];
+        $_SESSION['last_activity'] = time();
+
+        if ($admin['role'] == 'superadmin' || $admin['role'] == 'admin') {
+          header("Location: admin_dashboard.php");
+        } else if ($admin['role'] == 'employer') {
+          header("Location: manage.php");
+        }
+        exit();
+      } else {
+        // Wrong password: increment attempts
+        increment_login_attempts($username);
+
+        // Fetch updated attempts
+        $admin_row = get_admin_by_username($username);
+        if ($admin_row['login_attempts'] >= 3) {
+          // Generate new password and send email
+          $new_password = generate_random_words(8);
+          set_new_admin_password($username, $new_password);
+
+          // Send email
+          $subject = "Your SHANGYA Admin Password Has Been Reset";
+          $body = "Dear {$admin_row['display_name']},\n\nYour password has been reset due to too many failed login attempts.\n\nNew Password: $new_password\n\nPlease login and change your password after logging in.";
+          send_email($admin_row['email'], $subject, $body);
+
+          $message = "<p style='color:red; text-align:center;'>Too many failed attempts. A new password has been sent to your email.</p>";
+        } else {
+          $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
+        }
+      }
     }
+  } else {
+    $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
+  }
 }
 ?>
 
@@ -56,30 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-  <header class="navbar">
-    <section class="container nav-content">
-      <div class="logo">
-        <a href="./index.php" aria-label="Shangya Home">
-          <section class="logo">
-            <a href="./index.php"><img src="./images/shangya-logo.avif" alt="shangya-logo" /></a>
-          </section>
-        </a>
-      </div>
-      <input type="checkbox" class="menu-toggle" id="menu-toggle" />
-      <label for="menu-toggle" class="hamburger" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <nav class="nav-links">
-        <a href="./index.php" class="active">Home</a>
-        <a href="./jobs.php">Jobs</a>
-        <a href="./about.php">About</a>
-        <a href="./enhancements.php">Enhancements</a>
-        <a class="btn" href="./apply.php">Apply Jobs →</a>
-      </nav>
-    </section>
-  </header>
+  <?php include 'header.inc'; ?>
 
   <section class="hero">
     <section class="hero-content fade-in">

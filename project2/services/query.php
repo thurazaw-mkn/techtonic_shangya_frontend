@@ -32,6 +32,61 @@ function get_admin_by_credentials($username, $password)
     return $admin;
 }
 
+// Get admin by username (for login attempt logic)
+function get_admin_by_username($username) {
+    global $host, $user, $pwd, $sql_db;
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if (!$conn) return null;
+    $stmt = $conn->prepare("SELECT * FROM admins WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $admin = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
+    return $admin;
+}
+
+// Increment login attempts and set last attempt time
+function increment_login_attempts($username) {
+    global $host, $user, $pwd, $sql_db;
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if (!$conn) return false;
+    $stmt = $conn->prepare("UPDATE admins SET login_attempts = login_attempts + 1, last_login_attempt = NOW() WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
+
+// Reset login attempts after successful login or password reset
+function reset_login_attempts($username) {
+    global $host, $user, $pwd, $sql_db;
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if (!$conn) return false;
+    $stmt = $conn->prepare("UPDATE admins SET login_attempts = 0, last_login_attempt = NULL WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
+
+// Set new password for admin and reset attempts
+function set_new_admin_password($username, $new_password) {
+    global $host, $user, $pwd, $sql_db;
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    if (!$conn) return false;
+    $hashed = hash('sha256', $new_password);
+    $stmt = $conn->prepare("UPDATE admins SET password = ?, login_attempts = 0, last_login_attempt = NULL WHERE username = ?");
+    $stmt->bind_param("ss", $hashed, $username);
+    $success = $stmt->execute();
+    $stmt->close();
+    $conn->close();
+    return $success;
+}
+
 function companies_signup($name, $industry, $email, $description, $head_office_address, $photo_str)
 {
     global $host, $user, $pwd, $sql_db;
@@ -243,60 +298,44 @@ function get_eoi()
 }
 
 // Get EOIs with filter
-function get_eoi_with_filter($username, $job_reference_number = '', $first_name = '', $last_name = '')
-{
+function get_eoi_with_filter($username, $job_reference_number, $first_name, $last_name, $sort_field = 'created_at', $sort_order = 'desc') {
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-    if (!$conn) {
-        return null;
-    }
+    $allowed_fields = ['created_at', 'first_name', 'last_name', 'status'];
+    $allowed_orders = ['asc', 'desc'];
+    if (!in_array($sort_field, $allowed_fields)) $sort_field = 'created_at';
+    if (!in_array(strtolower($sort_order), $allowed_orders)) $sort_order = 'desc';
 
-    // Get company_id for this username
-    $stmt = $conn->prepare("SELECT company_id FROM admins WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->bind_result($company_id);
-    if (!$stmt->fetch()) {
-        $stmt->close();
-        $conn->close();
-        return []; // No such user or company_id
-    }
-    $stmt->close();
+    // ...existing filter logic...
 
-    // Build WHERE clause
-    $where = ["jobs.company_id = ?"];
-    $params = [$company_id];
-    $types = 'i';
+    $sql = "SELECT eoi.* FROM eoi
+            JOIN jobs ON eoi.job_ref_number = jobs.job_ref_number
+            JOIN admins ON jobs.company_id = admins.company_id
+            WHERE admins.username = ?";
+    $params = [$username];
+    $types = "s";
 
     if ($job_reference_number !== '') {
-        $where[] = "eoi.job_ref_number = ?";
+        $sql .= " AND eoi.job_ref_number = ?";
         $params[] = $job_reference_number;
-        $types .= 's';
+        $types .= "s";
     }
     if ($first_name !== '') {
-        $where[] = "eoi.first_name = ?";
-        $params[] = $first_name;
-        $types .= 's';
+        $sql .= " AND eoi.first_name LIKE ?";
+        $params[] = "%$first_name%";
+        $types .= "s";
     }
     if ($last_name !== '') {
-        $where[] = "eoi.last_name = ?";
-        $params[] = $last_name;
-        $types .= 's';
+        $sql .= " AND eoi.last_name LIKE ?";
+        $params[] = "%$last_name%";
+        $types .= "s";
     }
 
-    $sql = "SELECT eoi.* 
-            FROM eoi 
-            JOIN jobs ON eoi.job_ref_number = jobs.job_ref_number 
-            WHERE " . implode(' AND ', $where);
+    $sql .= " ORDER BY eoi.$sort_field $sort_order";
 
     $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        $conn->close();
-        return [];
-    }
     $stmt->bind_param($types, ...$params);
-
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -304,10 +343,8 @@ function get_eoi_with_filter($username, $job_reference_number = '', $first_name 
     while ($row = $result->fetch_assoc()) {
         $eois[] = $row;
     }
-
     $stmt->close();
     $conn->close();
-
     return $eois;
 }
 

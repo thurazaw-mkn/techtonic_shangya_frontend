@@ -66,6 +66,8 @@ if (isset($_POST['change_status_id']) && isset($_POST['new_status'])) {
 $job_reference_number = isset($_GET['job_reference_number']) ? trim($_GET['job_reference_number']) : '';
 $first_name = isset($_GET['first_name']) ? trim($_GET['first_name']) : '';
 $last_name = isset($_GET['last_name']) ? trim($_GET['last_name']) : '';
+$sort_field = isset($_GET['sort_field']) ? $_GET['sort_field'] : 'created_at';
+$sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'desc';
 $eois = get_eoi_with_filter($username, $job_reference_number, $first_name, $last_name);
 
 ?>
@@ -220,9 +222,19 @@ $eois = get_eoi_with_filter($username, $job_reference_number, $first_name, $last
                 <input type="text" name="job_reference_number" placeholder="Job Ref #" value="<?php echo htmlspecialchars($job_reference_number); ?>">
                 <input type="text" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($first_name); ?>">
                 <input type="text" name="last_name" placeholder="Last Name" value="<?php echo htmlspecialchars($last_name); ?>">
+                <select name="sort_field">
+                    <option value="created_at" <?php if (isset($_GET['sort_field']) && $_GET['sort_field'] == 'created_at') echo 'selected'; ?>>Created</option>
+                    <option value="first_name" <?php if (isset($_GET['sort_field']) && $_GET['sort_field'] == 'first_name') echo 'selected'; ?>>First Name</option>
+                    <option value="last_name" <?php if (isset($_GET['sort_field']) && $_GET['sort_field'] == 'last_name') echo 'selected'; ?>>Last Name</option>
+                    <option value="status" <?php if (isset($_GET['sort_field']) && $_GET['sort_field'] == 'status') echo 'selected'; ?>>Status</option>
+                </select>
+                <select name="sort_order">
+                    <option value="asc" <?php if (isset($_GET['sort_order']) && $_GET['sort_order'] == 'asc') echo 'selected'; ?>>Ascending</option>
+                    <option value="desc" <?php if (isset($_GET['sort_order']) && $_GET['sort_order'] == 'desc') echo 'selected'; ?>>Descending</option>
+                </select>
                 <button type="submit"><i class="fas fa-search"></i> Filter</button>
             </form>
-            <br/>
+            <br />
             <form method="get" action="" style="display:inline;">
                 <input type="text" name="delete_job_ref" placeholder="Delete all by Job Ref #" required>
                 <button type="submit" onclick="return confirm('Delete all EOIs for this job reference?');" style="background:#e53935;">

@@ -56,30 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-  <header class="navbar">
-    <section class="container nav-content">
-      <div class="logo">
-        <a href="./index.php" aria-label="Shangya Home">
-          <section class="logo">
-            <a href="./index.php"><img src="./images/shangya-logo.avif" alt="shangya-logo" /></a>
-          </section>
-        </a>
-      </div>
-      <input type="checkbox" class="menu-toggle" id="menu-toggle" />
-      <label for="menu-toggle" class="hamburger" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <nav class="nav-links">
-        <a href="./index.php" class="active">Home</a>
-        <a href="./jobs.php">Jobs</a>
-        <a href="./about.php">About</a>
-        <a href="./enhancements.php">Enhancements</a>
-        <a class="btn" href="./apply.php">Apply Jobs →</a>
-      </nav>
-    </section>
-  </header>
+  <?php include 'header.inc'; ?>
 
   <section class="hero">
     <section class="hero-content fade-in">
