@@ -55,9 +55,9 @@ $_SESSION['last_activity'] = time();
                 <span></span>
             </label>
             <nav class="nav-links">
-                <a href="./index.php" class="active">Home</a>
-                <a href="./jobs.php">Jobs</a>
-                <a href="./about.php">JobApplications</a>
+                <a href="./admin_dashboard.php" class="active">Home</a>
+                <a href="./admin_admins.php">Admins</a>
+                <a href="./admin_companies.php">Companies</a>
                 <a href="./admin_dashboard.php" style="color: red !important"><?php echo htmlspecialchars($_SESSION['display_name']); ?></a>
                 <a class="btn" href="admin_logout.php">Logout →</a>
             </nav>
@@ -73,49 +73,7 @@ $_SESSION['last_activity'] = time();
         </section>
     </section>
 
-    <footer class="footer">
-        <section class="footer-grid">
-            <section class="brand">
-                <img src="./images/teamlogo_techtonic.png" alt="Team Logo" class="team-logo" />
-                <h2>Team Techtonic</h2>
-                <p class="tagline">Innovating with passion</p>
-            </section>
-
-            <section class="developers">
-                <h3>Developers</h3>
-                <ul>
-                    <li>Thura Zaw</li>
-                    <li>Sai Lyan Hein</li>
-                    <li>Thet Hein Aung</li>
-                    <li>Krisvyn</li>
-                </ul>
-            </section>
-
-            <section class="socials">
-                <h3>Follow Us</h3>
-                <nav class="icons">
-                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@techtonictz" target="_blank" aria-label="YouTube"><i
-                            class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </nav>
-            </section>
-
-            <section class="cta">
-                <a href="./about.php" class="details-btn">View Developers' Details</a>
-            </section>
-        </section>
-
-        <section class="disclaimer">
-            <p>
-                This project is a collaboration between
-                <strong>INTI International College Subang</strong>
-                (Swinburne University of Technology program) and
-                <strong>SHANGYA CONSULTANCY</strong>.
-            </p>
-        </section>
-    </footer>
+    <?php include 'footer.inc'; ?>
 </body>
 
 </html>
