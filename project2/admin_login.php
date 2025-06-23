@@ -45,15 +45,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $admin_row = get_admin_by_username($username);
         if ($admin_row['login_attempts'] >= 3) {
           // Generate new password and send email
-          $new_password = generate_random_words(8);
+          $new_password = generate_random_words(5);
           set_new_admin_password($username, $new_password);
 
           // Send email
           $subject = "Your SHANGYA Admin Password Has Been Reset";
           $body = "Dear {$admin_row['display_name']},\n\nYour password has been reset due to too many failed login attempts.\n\nNew Password: $new_password\n\nPlease login and change your password after logging in.";
-          send_email($admin_row['email'], $subject, $body);
+          $email_result = send_email($admin_row['email'], $subject, $body);
 
-          $message = "<p style='color:red; text-align:center;'>Too many failed attempts. A new password has been sent to your email.</p>";
+          if ($email_result !== true) {
+            // Show the error returned by send_email
+            $message = "<p style='color:red; text-align:center;'>Failed to send email: $email_result</p>";
+          } else {
+            $message = "<p style='color:red; text-align:center;'>Too many failed attempts. A new password has been sent to your email.</p>";
+          }
         } else {
           $message = "<p style='color:red; text-align:center;'>Invalid username or password.</p>";
         }

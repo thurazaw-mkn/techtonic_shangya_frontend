@@ -42,19 +42,19 @@ $state_postcode_map = [
 ];
 
 // Collect POST data
-$job_ref_number = $_POST['job_ref_number'] ?? '';
-$first_name = $_POST['first_name'] ?? '';
-$last_name = $_POST['last_name'] ?? '';
-$dob = $_POST['dob'] ?? '';
-$gender = $_POST['gender'] ?? '';
-$address_street = $_POST['address_street'] ?? '';
-$address_town = $_POST['address_town'] ?? '';
-$address_state = $_POST['address_state'] ?? '';
-$address_postcode = $_POST['address_postcode'] ?? '';
-$email = $_POST['email'] ?? '';
-$phone = $_POST['phone'] ?? '';
+$job_ref_number = isset($_POST['job_ref_number']) ? $_POST['job_ref_number'] : '';
+$first_name = isset($_POST['first_name']) ? $_POST['first_name'] : '';
+$last_name = isset($_POST['last_name']) ? $_POST['last_name'] : '';
+$dob = isset($_POST['dob']) ? $_POST['dob'] : '';
+$gender = isset($_POST['gender']) ? $_POST['gender'] : '';
+$address_street = isset($_POST['address_street']) ? $_POST['address_street'] : '';
+$address_town = isset($_POST['address_town']) ? $_POST['address_town'] : '';
+$address_state = isset($_POST['address_state']) ? $_POST['address_state'] : '';
+$address_postcode = isset($_POST['address_postcode']) ? $_POST['address_postcode'] : '';
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+$phone = isset($_POST['phone']) ? $_POST['phone'] : '';
 $skills = isset($_POST['skills']) ? implode(',', $_POST['skills']) : '';
-$other_skills = $_POST['other_skills'] ?? '';
+$other_skills = isset($_POST['other_skills']) ? $_POST['other_skills'] : '';
 $created_at = get_datetime_now();
 $created_by = $first_name . ' ' . $last_name;
 $status = 'New';
@@ -79,7 +79,10 @@ if (!preg_match('/^[A-Za-z]{1,20}$/', $last_name)) {
 if (!preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $dob)) {
     $errors[] = "Date of Birth must be in dd/mm/yyyy format.";
 } else {
-    [$day, $month, $year] = explode('/', $dob);
+    $dob_parts = explode('/', $dob);
+    $day = isset($dob_parts[0]) ? $dob_parts[0] : '';
+    $month = isset($dob_parts[1]) ? $dob_parts[1] : '';
+    $year = isset($dob_parts[2]) ? $dob_parts[2] : '';
     if (!checkdate((int)$month, (int)$day, (int)$year)) {
         $errors[] = "Date of Birth is not a valid date.";
     } else {

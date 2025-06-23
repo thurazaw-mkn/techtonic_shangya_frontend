@@ -69,9 +69,10 @@ $jobs = get_job($position_keyword, $location_keyword);
       <?php foreach ($jobs as $job): ?>
         <section class="job-card">
           <article class="space-item job-card-header">
-            <img class="company-logo" src="https://cdn.theorg.com/0aca310b-49eb-408c-803d-43fe89a84cc7_thumb.jpg"
+            <img class="company-logo"
+              src="data:image/png;base64,<?php echo htmlspecialchars($job['company_photo_str']); ?>"
               alt="company logo" />
-            <h3><?php echo htmlspecialchars($job['company_name'] ?? ''); ?></h3>
+            <h3><?php echo htmlspecialchars($job['company_name']); ?></h3>
           </article>
           <section class="space-card-text">
             <article class="card-text">

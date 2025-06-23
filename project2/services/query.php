@@ -33,7 +33,8 @@ function get_admin_by_credentials($username, $password)
 }
 
 // Get admin by username (for login attempt logic)
-function get_admin_by_username($username) {
+function get_admin_by_username($username)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return null;
@@ -48,7 +49,8 @@ function get_admin_by_username($username) {
 }
 
 // Increment login attempts and set last attempt time
-function increment_login_attempts($username) {
+function increment_login_attempts($username)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return false;
@@ -61,7 +63,8 @@ function increment_login_attempts($username) {
 }
 
 // Reset login attempts after successful login or password reset
-function reset_login_attempts($username) {
+function reset_login_attempts($username)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return false;
@@ -74,7 +77,8 @@ function reset_login_attempts($username) {
 }
 
 // Set new password for admin and reset attempts
-function set_new_admin_password($username, $new_password) {
+function set_new_admin_password($username, $new_password)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return false;
@@ -297,28 +301,27 @@ function get_eoi()
     return $eois;
 }
 
-// Get EOIs with filter
-function get_eoi_with_filter($username, $job_reference_number, $first_name, $last_name, $sort_field = 'created_at', $sort_order = 'desc') {
+// Get EOIs with filter and sorting (PHP 5.x compatible)
+function get_eoi_with_filter($username, $job_ref_number, $first_name, $last_name, $sort_field = 'created_at', $sort_order = 'desc')
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-    $allowed_fields = ['created_at', 'first_name', 'last_name', 'status'];
-    $allowed_orders = ['asc', 'desc'];
+    $allowed_fields = array('created_at', 'first_name', 'last_name', 'status');
+    $allowed_orders = array('asc', 'desc');
     if (!in_array($sort_field, $allowed_fields)) $sort_field = 'created_at';
     if (!in_array(strtolower($sort_order), $allowed_orders)) $sort_order = 'desc';
-
-    // ...existing filter logic...
 
     $sql = "SELECT eoi.* FROM eoi
             JOIN jobs ON eoi.job_ref_number = jobs.job_ref_number
             JOIN admins ON jobs.company_id = admins.company_id
             WHERE admins.username = ?";
-    $params = [$username];
+    $params = array($username);
     $types = "s";
 
-    if ($job_reference_number !== '') {
+    if ($job_ref_number !== '') {
         $sql .= " AND eoi.job_ref_number = ?";
-        $params[] = $job_reference_number;
+        $params[] = $job_ref_number;
         $types .= "s";
     }
     if ($first_name !== '') {
@@ -332,14 +335,20 @@ function get_eoi_with_filter($username, $job_reference_number, $first_name, $las
         $types .= "s";
     }
 
-    $sql .= " ORDER BY eoi.$sort_field $sort_order";
+    $sql .= " ORDER BY eoi." . $sort_field . " " . $sort_order;
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param($types, ...$params);
+    if (!$stmt) {
+        $conn->close();
+        return array();
+    }
+    // PHP 5.x compatible dynamic binding
+    $bind_params = array_merge(array($types), $params);
+    call_user_func_array(array($stmt, 'bind_param'), refValues($bind_params));
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $eois = [];
+    $eois = array();
     while ($row = $result->fetch_assoc()) {
         $eois[] = $row;
     }
@@ -423,7 +432,8 @@ function create_job($username, $job_ref_number, $title, $position, $location, $r
 }
 
 // Delete all EOIs for a job reference number
-function delete_eois_by_job_ref($job_ref) {
+function delete_eois_by_job_ref($job_ref)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return false;
@@ -436,7 +446,8 @@ function delete_eois_by_job_ref($job_ref) {
 }
 
 // Delete a single EOI by eoi_number
-function delete_eoi_by_number($eoi_number) {
+function delete_eoi_by_number($eoi_number)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return false;
@@ -449,7 +460,8 @@ function delete_eoi_by_number($eoi_number) {
 }
 
 // Change EOI status and notify applicant
-function update_eoi_status_and_notify($eoi_number, $new_status) {
+function update_eoi_status_and_notify($eoi_number, $new_status)
+{
     global $host, $user, $pwd, $sql_db;
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) return "DB connection failed";
@@ -491,7 +503,7 @@ function get_job($position_keyword = '', $location_keyword = '', $page_size = 10
 
     $offset = ($page_number - 1) * $page_size;
     $where = "jobs.is_deleted = false";
-    $params = [];
+    $params = array();
     $types = "";
 
     if ($position_keyword !== '') {
@@ -505,7 +517,7 @@ function get_job($position_keyword = '', $location_keyword = '', $page_size = 10
         $types .= "s";
     }
 
-    $sql = "SELECT jobs.*, companies.name AS company_name 
+    $sql = "SELECT jobs.*, companies.name AS company_name, companies.photo_str AS company_photo_str
             FROM jobs 
             LEFT JOIN companies ON jobs.company_id = companies.id 
             WHERE $where 
@@ -516,13 +528,14 @@ function get_job($position_keyword = '', $location_keyword = '', $page_size = 10
 
     $stmt = $conn->prepare($sql);
 
-    // Dynamically bind params
-    $stmt->bind_param($types, ...$params);
+    // PHP 5.x compatible dynamic binding
+    $bind_params = array_merge(array($types), $params);
+    call_user_func_array(array($stmt, 'bind_param'), refValues($bind_params));
 
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $jobs = [];
+    $jobs = array();
     while ($row = $result->fetch_assoc()) {
         $jobs[] = $row;
     }
@@ -700,7 +713,7 @@ function update_job($id, $job_ref_number, $title, $position, $location, $require
         return null;
     }
 
-    $stmt = $conn->prepare("UPDATE jobs SET job_ref_lnumber = ?, title = ?, position = ?, location = ?, requirement_essential = ?, requirement_preferable = ?, salary_range = ?, description = ?, created_at = ?, created_by = ?, updated_at = ?, updated_by = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE jobs SET job_ref_number = ?, title = ?, position = ?, location = ?, requirement_essential = ?, requirement_preferable = ?, salary_range = ?, description = ?, created_at = ?, created_by = ?, updated_at = ?, updated_by = ? WHERE id = ?");
     $stmt->bind_param("isssssssssssi", $job_ref_number, $title, $position, $location, $requirement_essential, $requirement_preferable, $salary_range, $description, $created_at, $created_by, $updated_at, $updated_by, $id);
     $success = $stmt->execute();
 

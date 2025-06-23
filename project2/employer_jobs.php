@@ -188,49 +188,50 @@ $jobs = get_job_by_company($username = $_SESSION['username']);
 
     <section class="container card-section" style="margin-top: 15%;">
         <?php if ($jobs && count($jobs) > 0): ?>
-        <?php foreach ($jobs as $job): ?>
-            <section class="job-card">
-                <article class="space-item job-card-header">
-                    <img class="company-logo" src="<?php echo htmlspecialchars($job['company_photo_str']); ?>"
-                        alt="company logo" />
-                    <h3><?php echo htmlspecialchars($_SESSION['display_name']); ?></h3>
-                </article>
-                <section class="space-card-text">
-                    <article class="card-text">
-                        <h4>Offer position</h4>
-                        <p><?php echo htmlspecialchars($job['position']); ?></p>
+            <?php foreach ($jobs as $job): ?>
+                <section class="job-card">
+                    <article class="space-item job-card-header">
+                        <img class="company-logo"
+                            src="data:image/png;base64,<?php echo htmlspecialchars($job['company_photo_str']); ?>"
+                            alt="company logo" />
+                        <h3><?php echo htmlspecialchars($_SESSION['display_name']); ?></h3>
                     </article>
-                    <article class="card-text">
-                        <h4>Location</h4>
-                        <p><?php echo htmlspecialchars($job['location']); ?></p>
-                    </article>
-                    <article class="card-text">
-                        <h4>Requirement</h4>
-                        <h5>Essential</h5>
-                        <p><?php echo htmlspecialchars($job['requirement_essential']); ?></p>
-                        <hr/>
-                        <h5>Preferable</h5>
-                        <p><?php echo htmlspecialchars($job['requirement_preferable']); ?></p>
-                    </article>
+                    <section class="space-card-text">
+                        <article class="card-text">
+                            <h4>Offer position</h4>
+                            <p><?php echo htmlspecialchars($job['position']); ?></p>
+                        </article>
+                        <article class="card-text">
+                            <h4>Location</h4>
+                            <p><?php echo htmlspecialchars($job['location']); ?></p>
+                        </article>
+                        <article class="card-text">
+                            <h4>Requirement</h4>
+                            <h5>Essential</h5>
+                            <p><?php echo htmlspecialchars($job['requirement_essential']); ?></p>
+                            <hr />
+                            <h5>Preferable</h5>
+                            <p><?php echo htmlspecialchars($job['requirement_preferable']); ?></p>
+                        </article>
+                    </section>
+                    <section class="card-footer">
+                        <p>Posted : <?php echo htmlspecialchars(time_ago($job['created_at'])); ?></p>
+                        <p>Salary Range : <?php echo htmlspecialchars($job['salary_range']); ?></p>
+                        <p>Job Reference Number : <?php echo htmlspecialchars($job['job_ref_number']); ?></p>
+                    </section>
+                    <details>
+                        <summary>More Info - ⌄ </summary>
+                        <article class="dropdown-content">
+                            <h6>Job description</h6>
+                            <p><?php echo nl2br(htmlspecialchars($job['description'])); ?></p>
+                            <!-- Add more job details here if needed -->
+                        </article>
+                    </details>
                 </section>
-                <section class="card-footer">
-                    <p>Posted : <?php echo htmlspecialchars(time_ago($job['created_at'])); ?></p>
-                    <p>Salary Range : <?php echo htmlspecialchars($job['salary_range']); ?></p>
-                    <p>Job Reference Number : <?php echo htmlspecialchars($job['job_ref_number']); ?></p>
-                </section>
-                <details>
-                    <summary>More Info - ⌄ </summary>
-                    <article class="dropdown-content">
-                        <h6>Job description</h6>
-                        <p><?php echo nl2br(htmlspecialchars($job['description'])); ?></p>
-                        <!-- Add more job details here if needed -->
-                    </article>
-                </details>
-            </section>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p style="text-align:center;">No jobs found.</p>
-    <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p style="text-align:center;">No jobs found.</p>
+        <?php endif; ?>
     </section>
 
     <?php include 'footer.inc'; ?>
