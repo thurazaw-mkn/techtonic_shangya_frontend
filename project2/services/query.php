@@ -282,16 +282,6 @@ function get_eoi()
         return null;
     }
 
-<<<<<<< HEAD
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM eoi");
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Fetch all rows
-    $eoi_data = $result->fetch_all(MYSQLI_ASSOC);
-=======
     $stmt = $conn->prepare("SELECT * FROM eoi");
     $stmt->execute();
     $result = $stmt->get_result();
@@ -300,16 +290,11 @@ function get_eoi()
     while ($row = $result->fetch_assoc()) {
         $eois[] = $row;
     }
->>>>>>> develop
 
     $stmt->close();
     $conn->close();
 
-<<<<<<< HEAD
-    return $eoi_data;
-=======
     return $eois;
->>>>>>> develop
 }
 
 // Get EOIs with filter
